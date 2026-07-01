@@ -12,8 +12,8 @@ export default function Liquidity() {
         </div>
         <div className="rel-strip reveal">
           <span className="rel-label">Operamos con</span>
-          <span className="rel-logo"><span className="logo-fallback">Balanz</span></span>
-          <span className="rel-logo"><span className="logo-fallback">AdCap</span></span>
+          <span className="rel-logo"><img src="/balanz.jpg" alt="Balanz" loading="lazy" /><b className="rel-fb">Balanz</b></span>
+          <span className="rel-logo"><img src="/adcap.jpg" alt="AdCap" loading="lazy" /><b className="rel-fb">AdCap</b></span>
           <span className="rel-more">entre otras</span>
         </div>
         <div className="fin-cta reveal"><a className="btn btn-primary" href="#contacto">Quiero que gestionen mi liquidez</a></div>

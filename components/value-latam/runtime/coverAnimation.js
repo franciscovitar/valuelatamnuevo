@@ -119,9 +119,32 @@ export function initCoverAnimation() {
         ctx.fillText(text,x,y+1);
         ctx.restore();
       }
-      function focusBeam(a,b,c,intensity){
+      function bezierPoint(sx,sy,mx,my,ex,ey,q){
+        var inv=1-q;
+        return {
+          x:inv*inv*sx+2*inv*q*mx+q*q*ex,
+          y:inv*inv*sy+2*inv*q*my+q*q*ey
+        };
+      }
+      function drawPartialCurve(sx,sy,mx,my,ex,ey,amount){
+        amount=clamp(amount,0,1);
+        if(amount<=.002) return null;
+        var steps=Math.max(2,Math.ceil(42*amount));
+        ctx.beginPath();
+        ctx.moveTo(sx,sy);
+        var end={x:sx,y:sy};
+        for(var i=1;i<=steps;i++){
+          var q=amount*(i/steps);
+          end=bezierPoint(sx,sy,mx,my,ex,ey,q);
+          ctx.lineTo(end.x,end.y);
+        }
+        ctx.stroke();
+        return end;
+      }
+      function focusBeam(a,b,c,intensity,drawAmount){
         intensity=softAppear(intensity);
-        if(intensity<=.01) return;
+        drawAmount=softAppear(drawAmount==null?1:drawAmount);
+        if(intensity<=.01 || drawAmount<=.01) return;
         var dx=b.x-a.x, dy=b.y-a.y, len=Math.max(1,Math.sqrt(dx*dx+dy*dy));
         var sx=a.x+dx/len*42, sy=a.y+dy/len*42;
         var ex=b.x-dx/len*32, ey=b.y-dy/len*32;
@@ -132,11 +155,15 @@ export function initCoverAnimation() {
         ctx.shadowColor='rgba('+c.join(',')+','+(.35*intensity)+')';
         ctx.strokeStyle='rgba('+c.join(',')+','+(.42*intensity)+')';
         ctx.lineWidth=4.8;
-        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.quadraticCurveTo(mx,my,ex,ey); ctx.stroke();
+        var head=drawPartialCurve(sx,sy,mx,my,ex,ey,drawAmount);
         ctx.shadowBlur=0;
         ctx.strokeStyle='rgba(246,243,236,'+(.26*intensity)+')';
         ctx.lineWidth=1;
-        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.quadraticCurveTo(mx,my,ex,ey); ctx.stroke();
+        drawPartialCurve(sx,sy,mx,my,ex,ey,drawAmount);
+        if(head){
+          ctx.fillStyle='rgba('+c.join(',')+','+(.55*intensity)+')';
+          ctx.beginPath(); ctx.arc(head.x,head.y,2.1+1.8*intensity,0,Math.PI*2); ctx.fill();
+        }
         ctx.restore();
       }
       function spotlight(p,c,force,intensity){
@@ -156,22 +183,29 @@ export function initCoverAnimation() {
       function round(x,y,w,h,r){
         ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
       }
-      function curve(pa,pb,alpha,c,strength){
+      function curve(pa,pb,drawAmount,c,strength){
+        drawAmount=softAppear(drawAmount||0);
+        if(drawAmount<=.01) return;
         var on=softAppear(strength||0);
         var dx=pb.x-pa.x, dy=pb.y-pa.y, len=Math.max(1,Math.sqrt(dx*dx+dy*dy));
         var sx=pa.x+dx/len*34, sy=pa.y+dy/len*34;
         var ex=pb.x-dx/len*24, ey=pb.y-dy/len*24;
         var mx=(sx+ex)/2+(ey-sy)*.16, my=(sy+ey)/2-(ex-sx)*.16;
         ctx.save();
-        ctx.globalAlpha=alpha;
-        ctx.strokeStyle='rgba('+c.join(',')+','+(.24+.48*on)+')';
+        ctx.strokeStyle='rgba('+c.join(',')+','+(.22+.50*on)+')';
         ctx.lineWidth=1.15+.85*on;
-        ctx.beginPath(); ctx.moveTo(sx,sy); ctx.quadraticCurveTo(mx,my,ex,ey); ctx.stroke();
-        var q=(Math.sin(t*2.2+pa.x*.01)+1)/2;
-        var x=(1-q)*(1-q)*sx+2*(1-q)*q*mx+q*q*ex;
-        var y=(1-q)*(1-q)*sy+2*(1-q)*q*my+q*q*ey;
-        ctx.fillStyle='rgba('+c.join(',')+','+((.35+.6*on)*alpha)+')';
-        ctx.beginPath(); ctx.arc(x,y,2.4+on,0,Math.PI*2); ctx.fill();
+        var head=drawPartialCurve(sx,sy,mx,my,ex,ey,drawAmount);
+        if(head){
+          ctx.globalCompositeOperation='screen';
+          ctx.fillStyle='rgba('+c.join(',')+','+(.36+.44*on)+')';
+          ctx.beginPath(); ctx.arc(head.x,head.y,2.4+1.2*on,0,Math.PI*2); ctx.fill();
+        }
+        if(drawAmount>.98){
+          var q=(Math.sin(t*2.2+pa.x*.01)+1)/2;
+          var mote=bezierPoint(sx,sy,mx,my,ex,ey,q);
+          ctx.fillStyle='rgba('+c.join(',')+','+(.18+.42*on)+')';
+          ctx.beginPath(); ctx.arc(mote.x,mote.y,1.8+on,0,Math.PI*2); ctx.fill();
+        }
         ctx.restore();
       }
       function draw(now){
@@ -221,18 +255,25 @@ export function initCoverAnimation() {
         var finalMap=progress>.92;
         spotlight(pt(node('hub')), [210,183,117], .14, .9);
         var hubPt=pt(node('hub'));
+        var linkProgress={};
+        links.forEach(function(l){
+          linkProgress[l[0]+'>'+l[1]]=sm(l[2],l[2]+.18,progress);
+        });
         stages.forEach(function(s,i){
           var wt=stageWeight(i);
           if(wt>.01) s.a.forEach(function(id){
             var an=node(id);
             if(an){
               spotlight(pt(an), an.c, .13+.06*wt, wt);
-              focusBeam(hubPt,pt(an),an.c,wt*(.68+.12*Math.sin(t*2.4)*Math.sin(t*2.4)));
+              var direct=linkProgress['hub>'+id];
+              if(direct!=null){
+                focusBeam(hubPt,pt(an),an.c,wt*(.68+.12*Math.sin(t*2.4)*Math.sin(t*2.4)),direct);
+              }
             }
           });
         });
         links.forEach(function(l){
-          var a=sm(l[2],l[2]+.12,progress); if(a<=0) return;
+          var a=linkProgress[l[0]+'>'+l[1]]; if(a<=0) return;
           var na=node(l[0]), nb=node(l[1]);
           var strength=Math.min(nodePower(l[0]),nodePower(l[1]));
           var goldMix=softAppear(strength);

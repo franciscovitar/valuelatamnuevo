@@ -9,6 +9,7 @@ import {
   Intro,
   Liquidity,
   Metrics,
+  PartnerLogos,
   Payments,
   Process,
   Regulation,
@@ -29,6 +30,7 @@ export default function Home() {
         <CoverStory />
         <Intro />
         <Metrics />
+        <PartnerLogos />
         <Solutions />
         <Financing />
         <Liquidity />

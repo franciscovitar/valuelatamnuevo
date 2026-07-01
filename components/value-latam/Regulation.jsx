@@ -10,8 +10,14 @@ export default function Regulation() {
           <p>Value Latam no actúa como entidad financiera ni capta fondos del público, limitándose a la estructuración, asesoramiento y canalización de operaciones a través de intermediarios autorizados.</p>
         </div>
         <div className="seals">
-          <a className="seal logo" href="https://www.argentina.gob.ar/cnv" target="_blank" rel="noopener"><span className="logo-fallback">CNV</span></a>
-          <a className="seal logo" href="https://www.byma.com.ar/" target="_blank" rel="noopener"><span className="logo-fallback">BYMA</span></a>
+          <a className="seal logo" href="https://www.argentina.gob.ar/cnv" target="_blank" rel="noopener" aria-label="Comisión Nacional de Valores">
+            <img src="/cnv.png" alt="CNV" loading="lazy" />
+            <span className="logo-fallback">CNV</span>
+          </a>
+          <a className="seal logo" href="https://www.byma.com.ar/" target="_blank" rel="noopener" aria-label="BYMA">
+            <img src="/byma.png" alt="BYMA" loading="lazy" />
+            <span className="logo-fallback">BYMA</span>
+          </a>
         </div>
       </div>
     </section>

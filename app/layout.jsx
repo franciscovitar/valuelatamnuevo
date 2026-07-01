@@ -37,8 +37,8 @@ export const metadata = {
     images: ['/value-latam-og.svg'],
   },
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
     apple: '/value-latam-logo.png',
   },
   robots: {
