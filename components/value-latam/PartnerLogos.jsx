@@ -6,6 +6,10 @@ const partnerLogos = [
   { src: '/adcap.jpg', alt: 'AdCap' },
 ];
 
+function logoClass(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+
 export default function PartnerLogos() {
   return (
     <section className="trust partner-logos" aria-label="Empresas y partners">
@@ -16,8 +20,8 @@ export default function PartnerLogos() {
         </div>
         <div className="logos partner-logo-grid reveal">
           {partnerLogos.map((logo) => (
-            <span className="rel-logo partner-logo" key={logo.alt}>
-              <img src={logo.src} alt={logo.alt} loading="lazy" />
+            <span className={`rel-logo partner-logo partner-logo--${logoClass(logo.alt)}`} key={logo.alt}>
+              <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
               <b className="rel-fb">{logo.alt}</b>
             </span>
           ))}

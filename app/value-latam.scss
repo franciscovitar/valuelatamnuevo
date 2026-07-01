@@ -1017,3 +1017,577 @@
   .metrics-grid{grid-template-columns:1fr !important}
   .metric{min-height:auto}
 }
+
+
+/* final logo section polish */
+.partner-logos{
+  padding:70px 0 72px !important;
+}
+.partner-logos .wrap{
+  max-width:1220px;
+}
+.partner-logos .partner-head{
+  max-width:720px;
+  margin-bottom:34px;
+}
+.partner-logo-grid{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(150px,1fr)) !important;
+  gap:18px !important;
+  align-items:stretch !important;
+  width:100%;
+}
+.partner-logo-grid .partner-logo{
+  box-sizing:border-box;
+  width:100% !important;
+  min-width:0 !important;
+  height:78px !important;
+  padding:14px 22px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:rgba(246,243,236,.96) !important;
+  border:1px solid rgba(246,243,236,.24) !important;
+  border-radius:10px !important;
+  box-shadow:0 18px 40px -34px rgba(0,0,0,.75);
+  overflow:hidden;
+}
+.partner-logo-grid .partner-logo img{
+  display:block !important;
+  width:100% !important;
+  max-width:132px !important;
+  height:42px !important;
+  max-height:42px !important;
+  object-fit:contain !important;
+  filter:saturate(.95) contrast(1.02) !important;
+}
+.partner-logo-grid .partner-logo .rel-fb{
+  display:none !important;
+}
+.partner-logo-grid .partner-logo:hover{
+  transform:translateY(-2px);
+  border-color:rgba(143,178,214,.55) !important;
+  background:#fff !important;
+}
+
+.reg .seals{
+  display:flex !important;
+  gap:16px !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  flex-wrap:wrap !important;
+}
+.reg .seal.logo{
+  box-sizing:border-box;
+  width:132px !important;
+  height:72px !important;
+  padding:13px 18px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:rgba(246,243,236,.96) !important;
+  border:1px solid rgba(246,243,236,.25) !important;
+  border-radius:10px !important;
+  text-decoration:none !important;
+  box-shadow:0 18px 40px -34px rgba(0,0,0,.72);
+  overflow:hidden;
+}
+.reg .seal.logo img{
+  display:block !important;
+  width:100% !important;
+  height:42px !important;
+  max-width:92px !important;
+  max-height:42px !important;
+  object-fit:contain !important;
+}
+.reg .seal.logo .logo-fallback{
+  display:none !important;
+}
+.reg .seal.logo:hover{
+  transform:translateY(-2px);
+  background:#fff !important;
+  border:1px solid rgba(143,178,214,.55) !important;
+}
+
+@media(max-width:980px){
+  .partner-logo-grid{
+    grid-template-columns:repeat(3,minmax(150px,1fr)) !important;
+  }
+}
+@media(max-width:620px){
+  .partner-logos{
+    padding:46px 0 52px !important;
+  }
+  .partner-logo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:12px !important;
+  }
+  .partner-logo-grid .partner-logo{
+    height:68px !important;
+    padding:12px 16px !important;
+  }
+  .partner-logo-grid .partner-logo img{
+    max-width:118px !important;
+    height:36px !important;
+    max-height:36px !important;
+  }
+  .reg .seals{
+    gap:12px !important;
+  }
+  .reg .seal.logo{
+    width:116px !important;
+    height:64px !important;
+    padding:12px 16px !important;
+  }
+  .reg .seal.logo img{
+    max-width:84px !important;
+    height:38px !important;
+    max-height:38px !important;
+  }
+}
+
+
+/* final responsive and interaction polish */
+body.menu-open{overflow:hidden}
+.menu-btn{
+  width:42px;
+  height:42px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(246,243,236,.18) !important;
+  border-radius:999px;
+  background:rgba(246,243,236,.04) !important;
+}
+.menu-btn span{
+  display:block;
+  width:18px;
+  height:2px;
+  background:currentColor;
+  border-radius:999px;
+  transition:transform .22s var(--ease-out),opacity .18s ease;
+}
+.menu-btn span + span{margin-top:4px}
+.nav.menu-open .menu-btn span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav.menu-open .menu-btn span:nth-child(2){opacity:0}
+.nav.menu-open .menu-btn span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+.vl2-wa{
+  color:#fff !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.34);
+  border-color:rgba(255,255,255,.42) !important;
+  box-shadow:0 18px 44px -18px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.22) !important;
+}
+.vl2-wa .dot{
+  background:#fff !important;
+  box-shadow:0 0 0 5px rgba(255,255,255,.18),0 0 16px rgba(255,255,255,.32) !important;
+}
+
+.rel-strip{
+  align-items:center;
+  gap:14px !important;
+}
+.rel-strip .liquidity-logo{
+  width:120px !important;
+  height:64px !important;
+  padding:10px 16px !important;
+  border-radius:16px !important;
+  background:rgba(246,243,236,.06) !important;
+  border:1px solid rgba(143,178,214,.22) !important;
+  box-shadow:inset 0 1px 0 rgba(246,243,236,.05),0 14px 34px -28px rgba(0,0,0,.8) !important;
+  overflow:hidden !important;
+}
+.rel-strip .liquidity-logo img{
+  width:100% !important;
+  height:42px !important;
+  max-width:86px !important;
+  max-height:42px !important;
+  object-fit:contain !important;
+  border-radius:8px !important;
+}
+.rel-strip .liquidity-logo .rel-fb{display:none !important}
+
+.field input,.field select,.field textarea{
+  min-height:48px;
+  color:var(--paper) !important;
+  background:rgba(4,15,26,.78) !important;
+  border-color:rgba(143,178,214,.24) !important;
+}
+.field select{
+  appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,rgba(246,243,236,.75) 50%),linear-gradient(135deg,rgba(246,243,236,.75) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 21px,calc(100% - 12px) 21px;
+  background-size:6px 6px,6px 6px;
+  background-repeat:no-repeat;
+  padding-right:42px !important;
+}
+.field textarea{min-height:104px}
+.field-error label{color:#ffd0c2 !important}
+.field [aria-invalid="true"]{
+  border-color:#ff9a7b !important;
+  box-shadow:0 0 0 3px rgba(255,154,123,.14) !important;
+}
+.vl2-form-feedback{
+  min-height:20px;
+  margin-top:14px !important;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(143,178,214,.10);
+  color:rgba(246,243,236,.84) !important;
+}
+.vl2-form-feedback:empty{display:none}
+.vl2-form-feedback.is-error{background:rgba(255,154,123,.12);color:#ffd0c2 !important}
+.vl2-form-feedback.is-success{background:rgba(37,211,102,.12);color:#bcffd3 !important}
+
+.privacy-page{
+  min-height:100vh;
+  background:linear-gradient(180deg,#0a2138 0%,#02070e 100%);
+  color:var(--paper);
+}
+.privacy-shell{
+  max-width:760px;
+}
+.privacy-brand{margin-bottom:34px}
+.privacy-page h1{
+  margin:14px 0 22px;
+  font-size:clamp(38px,6vw,64px);
+}
+.privacy-page p{
+  color:rgba(246,243,236,.82);
+  margin-bottom:16px;
+  font-size:16px;
+}
+.privacy-page a:not(.btn){color:#9ec0e6;text-decoration:underline}
+
+@media(max-width:980px){
+  .nav-links{
+    position:fixed;
+    left:16px;
+    right:16px;
+    top:82px;
+    display:grid !important;
+    gap:6px !important;
+    padding:14px;
+    border:1px solid rgba(143,178,214,.24);
+    border-radius:20px;
+    background:rgba(6,18,30,.96);
+    box-shadow:0 24px 60px -30px rgba(0,0,0,.75);
+    backdrop-filter:blur(14px);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-10px);
+    pointer-events:none;
+    transition:opacity .18s ease,transform .22s var(--ease-out),visibility .18s ease;
+  }
+  .nav.menu-open .nav-links{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .nav-links a{
+    min-height:46px;
+    display:flex !important;
+    align-items:center;
+    padding:0 14px;
+    border-radius:12px;
+    color:rgba(246,243,236,.88) !important;
+  }
+  .nav-links a:hover,.nav-links a:focus-visible{
+    background:rgba(143,178,214,.12);
+    color:#fff !important;
+  }
+}
+
+@media(max-width:640px){
+  section{padding:64px 0}
+  .wrap{padding-inline:20px}
+  .cover-scroll{height:300vh !important}
+  .cover-caption{
+    bottom:22px !important;
+    align-items:flex-start !important;
+    justify-content:flex-start !important;
+    padding-inline:20px !important;
+  }
+  .cover-caption .pb-step{font-size:25px !important}
+  .cover-caption .pb-txt{font-size:13.5px !important;max-width:280px !important}
+  .row2{grid-template-columns:1fr !important;gap:0 !important}
+  .cta form{padding:22px !important;border-radius:20px !important}
+  .cta .sub{font-size:16px !important;max-width:none}
+  .rel-strip{
+    justify-content:flex-start;
+  }
+  .rel-strip .rel-label,.rel-strip .rel-more{
+    width:100%;
+  }
+  .rel-strip .liquidity-logo{
+    width:calc(50% - 7px) !important;
+    height:66px !important;
+  }
+  .foot-grid{gap:28px !important}
+  .foot-bottom{align-items:flex-start !important}
+}
+
+@media(max-width:360px){
+  .nav .btn-primary{max-width:142px !important;font-size:11.5px !important}
+  .vl2-wa{font-size:12px !important;padding:10px 12px !important}
+}
+
+/* final detail polish - 2026-07-01 */
+.partner-logos{
+  padding:clamp(56px,7vw,92px) 0 !important;
+}
+.partner-logos .wrap{
+  max-width:1420px;
+}
+.partner-logos .partner-head{
+  max-width:720px;
+  margin:0 0 clamp(28px,4vw,48px) !important;
+}
+.partner-logo-grid{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(132px,1fr)) !important;
+  gap:clamp(18px,3.2vw,46px) !important;
+  align-items:center;
+  width:100%;
+}
+.partner-logo,
+.rel-strip .liquidity-logo,
+.reg .seal.logo{
+  box-sizing:border-box;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  background:rgba(246,243,236,.055) !important;
+  border:1px solid rgba(246,243,236,.14) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 44px rgba(0,0,0,.12);
+  border-radius:14px !important;
+  transition:transform .22s var(--ease-out),border-color .22s ease,background-color .22s ease,box-shadow .22s ease;
+}
+.partner-logo{
+  min-width:0 !important;
+  width:100% !important;
+  height:76px !important;
+  padding:14px 18px !important;
+}
+.partner-logo img,
+.rel-strip .liquidity-logo img,
+.reg .seal.logo img{
+  display:block;
+  width:auto !important;
+  height:auto !important;
+  max-width:100%;
+  object-fit:contain;
+}
+.partner-logo img{
+  max-height:42px !important;
+}
+.partner-logo--acindar img{max-height:34px !important}
+.partner-logo--argenpymes img{max-height:44px !important}
+.partner-logo--trend img{max-height:46px !important}
+.partner-logo--balanz img,
+.partner-logo--adcap img{max-height:38px !important}
+.partner-logo:hover,
+.rel-strip .liquidity-logo:hover,
+.reg .seal.logo:hover{
+  transform:translateY(-2px);
+  border-color:rgba(143,178,214,.46) !important;
+  background:rgba(143,178,214,.07) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 22px 54px rgba(0,0,0,.18);
+}
+.partner-logo .rel-fb,
+.rel-strip .liquidity-logo .rel-fb,
+.reg .seal.logo .logo-fallback{
+  display:none !important;
+}
+.rel-strip{
+  gap:14px !important;
+}
+.rel-strip .liquidity-logo{
+  height:64px !important;
+  min-width:138px !important;
+  padding:12px 18px !important;
+}
+.rel-strip .liquidity-logo img{
+  max-height:34px !important;
+  max-width:108px !important;
+}
+.reg-inner{
+  align-items:center !important;
+}
+.reg .seals{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(132px,164px));
+  justify-content:center;
+  gap:18px !important;
+}
+.reg .seal.logo{
+  width:100% !important;
+  height:76px !important;
+  padding:14px 18px !important;
+}
+.reg .seal.logo img{
+  max-height:42px !important;
+  max-width:116px !important;
+  filter:none !important;
+}
+.vl2-wa{
+  color:#fff !important;
+  text-shadow:0 1px 1px rgba(0,0,0,.22);
+}
+.vl2-wa .dot{
+  background:#fff !important;
+  box-shadow:0 0 0 5px rgba(255,255,255,.18),0 0 14px rgba(255,255,255,.35) !important;
+}
+.menu-btn:focus-visible,
+.btn:focus-visible,
+.nav-links a:focus-visible,
+.tab:focus-visible,
+summary:focus-visible,
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible{
+  outline:2px solid rgba(143,178,214,.9);
+  outline-offset:3px;
+}
+.cover-sticky{
+  isolation:isolate;
+}
+.cover-brain{
+  min-height:100svh;
+}
+.cover-caption{
+  min-height:54px;
+}
+
+@media(max-width:1100px){
+  .partner-logo-grid{
+    grid-template-columns:repeat(3,minmax(140px,1fr)) !important;
+  }
+  .reg-inner{
+    grid-template-columns:1fr !important;
+    gap:30px !important;
+  }
+  .reg .seals{
+    justify-content:start;
+  }
+}
+@media(max-width:760px){
+  .partner-logos .partner-head{
+    margin-bottom:28px !important;
+  }
+  .partner-logo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:14px !important;
+  }
+  .partner-logo{
+    height:68px !important;
+    padding:12px 14px !important;
+  }
+  .partner-logo img{
+    max-height:36px !important;
+  }
+  .partner-logo--acindar img{max-height:30px !important}
+  .partner-logo--trend img,
+  .partner-logo--argenpymes img{max-height:38px !important}
+  .reg .seals{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    width:100%;
+  }
+  .reg .seal.logo{
+    height:68px !important;
+  }
+  .cover-scroll{
+    height:315vh !important;
+  }
+  .vl2-cover-hud{
+    width:min(94vw,520px) !important;
+    height:min(94vw,520px) !important;
+  }
+  .cover-caption{
+    bottom:20px !important;
+    justify-content:flex-start !important;
+    padding-inline:22px !important;
+  }
+}
+@media(max-width:480px){
+  .nav-inner{
+    min-height:70px;
+    gap:10px !important;
+  }
+  .brand img{
+    max-width:120px;
+  }
+  .nav-cta .btn{
+    padding:9px 12px !important;
+    font-size:11px !important;
+  }
+  .nav.menu-open .nav-links{
+    left:14px !important;
+    right:14px !important;
+    top:76px !important;
+    width:auto !important;
+  }
+  .partner-logo-grid{
+    grid-template-columns:1fr !important;
+  }
+  .partner-logo{
+    height:66px !important;
+    max-width:260px;
+    margin-inline:auto;
+  }
+  .reg .seals{
+    grid-template-columns:1fr;
+    max-width:260px;
+  }
+  .rel-strip{
+    justify-content:flex-start !important;
+  }
+  .rel-strip .liquidity-logo{
+    min-width:120px !important;
+    height:58px !important;
+    padding:10px 14px !important;
+  }
+  .rel-strip .liquidity-logo img{
+    max-width:94px !important;
+    max-height:30px !important;
+  }
+  .cover-scroll{
+    height:330vh !important;
+  }
+  .cover-brain{
+    min-height:100svh;
+  }
+  .vl2-cover-hud{
+    width:min(112vw,430px) !important;
+    height:min(112vw,430px) !important;
+  }
+  .cover-caption{
+    bottom:18px !important;
+    min-height:72px;
+  }
+  .cover-caption .pb-step{
+    font-size:22px !important;
+  }
+  .cover-caption .pb-txt{
+    font-size:12.5px !important;
+    line-height:1.35 !important;
+    max-width:245px !important;
+  }
+  .vl2-wa{
+    max-width:calc(100vw - 90px);
+    white-space:nowrap;
+  }
+}
+@media(max-width:360px){
+  .nav-cta .btn{
+    max-width:124px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .vl2-cover-hud{
+    width:min(118vw,392px) !important;
+    height:min(118vw,392px) !important;
+  }
+}
+

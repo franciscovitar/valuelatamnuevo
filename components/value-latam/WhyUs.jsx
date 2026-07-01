@@ -14,7 +14,7 @@ export default function WhyUs() {
             <li>Articulamos con tu contador y tu estudio jurídico, sin pisar su rol.</li>
           </ul>
         </div>
-        <div className="pullquote reveal"><p className="q">"En Argentina, la mayoría de los negocios terminan siendo, en buena medida, <span>financieros</span>. Nuestro trabajo es que esa variable juegue a favor de la empresa."</p><p className="by">— Mauricio Maggio, Socio</p></div>
+        <div className="pullquote reveal"><p className="q">&ldquo;En Argentina, la mayoría de los negocios terminan siendo, en buena medida, <span>financieros</span>. Nuestro trabajo es que esa variable juegue a favor de la empresa.&rdquo;</p><p className="by">— Mauricio Maggio, Socio</p></div>
       </div>
     </section>
   );

@@ -2,11 +2,29 @@ export function initNavigationCards() {
   const cleanups = [];
 
   const menuButton = document.querySelector('.menu-btn');
-  const contactSection = document.getElementById('contacto');
-  if (menuButton && contactSection) {
-    const onMenuClick = () => contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const nav = document.querySelector('.nav');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuButton && nav && navLinks) {
+    const setMenu = (open) => {
+      nav.classList.toggle('menu-open', open);
+      document.body.classList.toggle('menu-open', open);
+      menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
+    const onMenuClick = () => setMenu(!nav.classList.contains('menu-open'));
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setMenu(false);
+    };
+    const onLinkClick = () => setMenu(false);
     menuButton.addEventListener('click', onMenuClick);
-    cleanups.push(() => menuButton.removeEventListener('click', onMenuClick));
+    document.addEventListener('keydown', onKeyDown);
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', onLinkClick));
+    cleanups.push(() => {
+      menuButton.removeEventListener('click', onMenuClick);
+      document.removeEventListener('keydown', onKeyDown);
+      navLinks.querySelectorAll('a').forEach((link) => link.removeEventListener('click', onLinkClick));
+      setMenu(false);
+    });
   }
 
   document.querySelectorAll('.sol-card[data-expand] .sol-head').forEach((head) => {

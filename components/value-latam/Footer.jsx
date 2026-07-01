@@ -12,9 +12,9 @@ export default function Footer() {
           </div>
           <div><h5>Soluciones</h5><ul><li><a href="#soluciones">Financiamiento</a></li><li><a href="#soluciones">Inversiones & Liquidez</a></li><li><a href="#medios">Medios de Pago</a></li></ul></div>
           <div><h5>Empresa</h5><ul><li><a href="#diferencial">Quiénes somos</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
-          <div><h5>Contacto</h5><ul><li><a href="#contacto">Agendar una llamada</a></li><li><a href={'mailto:' + contact.email}>{contact.email}</a></li><li><a href={contact.whatsappUrl}>WhatsApp</a></li><li>Mariano Castex 499 · Piso 3 · Of. 303</li></ul></div>
+          <div><h5>Contacto</h5><ul><li><a href="#contacto">Agendar una llamada</a></li><li><a href={'mailto:' + contact.email}>{contact.email}</a></li><li><a href={contact.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a></li><li>Mariano Castex 499 · Piso 3 · Of. 303</li></ul></div>
         </div>
-        <div className="foot-bottom"><span>© 2026 Value Latam. Todos los derechos reservados.</span><span className="social"><a href="https://www.linkedin.com/in/value-latam-a60a3137b/">LinkedIn</a><a href="https://www.instagram.com/value.latam/">Instagram</a></span></div>
+        <div className="foot-bottom"><span>© 2026 Value Latam. Todos los derechos reservados.</span><span className="social"><a href="https://www.linkedin.com/in/value-latam-a60a3137b/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/value.latam/" target="_blank" rel="noopener noreferrer">Instagram</a></span></div>
       </div>
     </footer>
   );

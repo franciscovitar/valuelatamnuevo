@@ -9,9 +9,9 @@ export function initLeadCapture() {
     link.className = 'vl2-wa';
     link.href = WHATSAPP_URL;
     link.target = '_blank';
-    link.rel = 'noopener';
+    link.rel = 'noopener noreferrer';
     link.setAttribute('aria-label', 'Abrir WhatsApp de Value Latam');
-    link.innerHTML = '<span class="dot" aria-hidden="true"></span>WhatsApp';
+    link.innerHTML = '<span class="dot" aria-hidden="true"></span><span>WhatsApp</span>';
     document.body.appendChild(link);
     cleanups.push(() => link.remove());
   }
@@ -21,7 +21,7 @@ export function initLeadCapture() {
     if (text.includes('whatsapp')) {
       link.href = WHATSAPP_URL;
       link.target = '_blank';
-      link.rel = 'noopener';
+      link.rel = 'noopener noreferrer';
     }
     if (text.includes(EMAIL)) {
       link.href = 'mailto:' + EMAIL;
@@ -39,17 +39,34 @@ export function initLeadCapture() {
     form.appendChild(feedback);
   }
 
+  const required = ['n', 'e', 't', 'emp', 'obj'];
+  const setFieldState = (field, invalid) => {
+    if (!field) return;
+    field.toggleAttribute('aria-invalid', invalid);
+    field.closest('.field')?.classList.toggle('field-error', invalid);
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
-    const name = document.getElementById('n')?.value || '';
-    const email = document.getElementById('e')?.value || '';
-    const phone = document.getElementById('t')?.value || '';
-    const company = document.getElementById('emp')?.value || '';
+    const name = document.getElementById('n')?.value.trim() || '';
+    const email = document.getElementById('e')?.value.trim() || '';
+    const phone = document.getElementById('t')?.value.trim() || '';
+    const company = document.getElementById('emp')?.value.trim() || '';
     const objective = document.getElementById('obj')?.value || '';
-    const message = document.getElementById('m')?.value || '';
+    const message = document.getElementById('m')?.value.trim() || '';
 
-    if (!name || !email || !phone || !company || !objective) {
+    let valid = true;
+    required.forEach((id) => {
+      const field = document.getElementById(id);
+      const invalid = !field?.value || (field.type === 'email' && !field.checkValidity());
+      setFieldState(field, invalid);
+      if (invalid) valid = false;
+    });
+
+    if (!valid) {
+      feedback.className = 'vl2-form-feedback is-error';
       feedback.textContent = 'Completá los campos obligatorios para abrir WhatsApp con el mensaje listo.';
+      form.querySelector('[aria-invalid="true"]')?.focus();
       return;
     }
 
@@ -63,12 +80,26 @@ export function initLeadCapture() {
       message ? 'Mensaje: ' + message : '',
     ].filter(Boolean).join('\n');
 
+    feedback.className = 'vl2-form-feedback is-success';
     feedback.textContent = 'Abriendo WhatsApp con la consulta preparada...';
     window.open(WHATSAPP_URL + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
   };
 
+  const onInput = (event) => {
+    const target = event.target;
+    if (target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLTextAreaElement) {
+      setFieldState(target, false);
+    }
+  };
+
   form.addEventListener('submit', onSubmit);
-  cleanups.push(() => form.removeEventListener('submit', onSubmit));
+  form.addEventListener('input', onInput);
+  form.addEventListener('change', onInput);
+  cleanups.push(() => {
+    form.removeEventListener('submit', onSubmit);
+    form.removeEventListener('input', onInput);
+    form.removeEventListener('change', onInput);
+  });
 
   return () => cleanups.forEach((cleanup) => cleanup());
 }
