@@ -1,0 +1,37 @@
+/* cover reference match - remove grid overlay */
+.cover-brain{
+  background:
+    radial-gradient(92% 82% at 50% 48%, rgba(27,58,92,.22), transparent 58%),
+    radial-gradient(70% 70% at 48% 45%, rgba(143,178,214,.10), transparent 66%),
+    #01040a;
+}
+.cover-brain::before{
+  background:
+    conic-gradient(from 212deg at 50% 50%, transparent 0 18%, rgba(143,178,214,.055) 25%, transparent 33%, transparent 59%, rgba(210,183,117,.06) 66%, transparent 76%),
+    radial-gradient(68% 54% at 50% 48%, rgba(143,178,214,.075), transparent 70%);
+  opacity:.46;
+  mix-blend-mode:screen;
+}
+.cover-brain::after{
+  background:
+    radial-gradient(ellipse at 50% 48%, transparent 0 50%, rgba(1,4,10,.34) 74%, rgba(1,4,10,.92) 100%),
+    linear-gradient(180deg, rgba(1,4,10,.08), transparent 32%, rgba(1,4,10,.18));
+}
+.vl2-cover-hud{
+  width:min(68vw,84vh,840px);
+  height:min(68vw,84vh,840px);
+}
+.vl2-cover-hud::before{
+  inset:13%;
+  border-color:rgba(210,183,117,.13);
+  box-shadow:0 0 34px rgba(143,178,214,.045), inset 0 0 34px rgba(210,183,117,.035);
+}
+.cover-caption{
+  bottom:clamp(28px,4.8vh,52px);
+}
+@media(max-width:640px){
+  .vl2-cover-hud{
+    width:min(92vw,54vh);
+    height:min(92vw,54vh);
+  }
+}

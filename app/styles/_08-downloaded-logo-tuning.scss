@@ -1,0 +1,76 @@
+/* desktop downloaded logos final tuning */
+.partner-logo{
+  height:112px;
+  padding:18px 28px;
+}
+.partner-logo--acindar img{
+  max-height:58px;
+  max-width:94%;
+}
+.partner-logo--argenpymes img{
+  max-height:78px;
+  max-width:96%;
+}
+.partner-logo--trend img{
+  max-height:78px;
+  max-width:98%;
+}
+.partner-logo--balanz img,
+.partner-logo--adcap img{
+  max-height:82px;
+  max-width:82px;
+}
+.rel-strip .liquidity-logo{
+  height:100px;
+  width:210px;
+  min-width:210px;
+  padding:16px 28px;
+}
+.rel-strip .liquidity-logo--balanz img,
+.rel-strip .liquidity-logo--adcap img{
+  max-height:82px;
+  max-width:82px;
+}
+.reg .seal.logo{
+  height:112px;
+  padding:22px 30px;
+}
+.reg .seal-logo--cnv img{
+  max-width:196px;
+  max-height:76px;
+}
+.reg .seal-logo--byma img{
+  max-width:186px;
+  max-height:76px;
+}
+
+@media(max-width:760px){
+  .partner-logo{
+    height:104px;
+  }
+  .partner-logo--balanz img,
+  .partner-logo--adcap img{
+    max-height:74px;
+    max-width:74px;
+  }
+  .rel-strip .liquidity-logo{
+    height:94px;
+    width:100%;
+    min-width:0;
+  }
+  .rel-strip .liquidity-logo--balanz img,
+  .rel-strip .liquidity-logo--adcap img{
+    max-height:76px;
+    max-width:76px;
+  }
+}
+@media(max-width:480px){
+  .partner-logo{
+    height:100px;
+    padding:16px 22px;
+  }
+  .partner-logo--argenpymes img,
+  .partner-logo--trend img{
+    max-height:72px;
+  }
+}

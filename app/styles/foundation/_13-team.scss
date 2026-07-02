@@ -1,0 +1,9 @@
+/* ---------- TEAM ---------- */
+  .team{background:var(--paper-2);border-top:1px solid var(--line-light)}
+  .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .person{background:#fff;border:1px solid var(--line-light);border-radius:3px;padding:30px 30px}
+  .person .role{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--brass);letter-spacing:.08em;text-transform:uppercase}
+  .person h4{font-size:22px;margin:10px 0 14px}
+  .person p{font-size:15px;color:var(--slate)}
+  .person a.li{margin-top:18px;display:inline-flex;gap:7px;font-weight:600;font-size:14px;color:var(--ink)}
+  .person a.li:hover{color:var(--brass)}

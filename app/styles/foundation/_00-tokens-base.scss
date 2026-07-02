@@ -1,0 +1,36 @@
+/* Migrado desde value-latam-cinematic-prototype.html. Mantener global: el HTML original usa clases globales. */
+:root{
+    --ink:#0B2129;
+    --ink-2:#102D38;
+    --ink-3:#163A47;
+    --paper:#F6F3EC;
+    --paper-2:#FBFAF6;
+    --brass:#C49A3A;
+    --brass-2:#D8B25A;
+    --slate:#5C7480;
+    --slate-light:#9DB0B8;
+    --line-dark:rgba(246,243,236,.14);
+    --line-light:rgba(11,33,41,.12);
+    --maxw:1180px;
+    --ease-out:cubic-bezier(.23,1,.32,1);
+    --ease-in-out:cubic-bezier(.77,0,.175,1);
+    --ease-drawer:cubic-bezier(.32,.72,0,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--brass);font-weight:500;
+  }
+  .serif{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-.01em;line-height:1.08}
+  .mono{font-family:'IBM Plex Mono',monospace}

@@ -1,0 +1,13 @@
+/* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(11,33,41,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:11px;color:var(--paper)}
+  .brand .mark{width:30px;height:30px;border:1.5px solid var(--brass);display:grid;place-items:center;color:var(--brass);font-family:'Fraunces',serif;font-weight:600;font-size:17px;border-radius:1px}
+  .brand b{font-weight:600;font-size:18px;letter-spacing:.01em}
+  .brand img{height:44px;width:auto;display:block}
+  .brand.foot-logo img{height:40px}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:var(--slate-light);font-size:15px;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--paper)}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .menu-btn{display:none;background:none;border:0;color:var(--paper);font-size:24px}
