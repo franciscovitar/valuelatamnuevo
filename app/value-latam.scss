@@ -1591,3 +1591,1105 @@ summary:focus-visible,
   }
 }
 
+/* final requested polish - whatsapp menu cover cards form */
+.nav-mobile-cta{display:none !important}
+.menu-btn{
+  display:none;
+  place-items:center;
+  padding:0 !important;
+  line-height:0;
+}
+.menu-btn span{margin-inline:auto}
+.vl2-wa{
+  gap:8px !important;
+}
+.vl2-wa .dot{display:none !important}
+.vl2-wa .wa-icon{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+  color:#fff;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.24));
+}
+.cover-brain{
+  background:
+    radial-gradient(120% 90% at 10% 15%,rgba(143,178,214,.11),transparent 48%),
+    radial-gradient(105% 88% at 88% 78%,rgba(210,183,117,.09),transparent 52%),
+    radial-gradient(70% 65% at 50% 50%,rgba(25,55,86,.42),transparent 68%),
+    #01040a !important;
+}
+.cover-brain::before{
+  opacity:.9 !important;
+  background:
+    linear-gradient(105deg,transparent 0%,rgba(143,178,214,.09) 38%,transparent 62%),
+    repeating-linear-gradient(115deg,rgba(143,178,214,.045) 0 1px,transparent 1px 70px),
+    repeating-linear-gradient(25deg,rgba(210,183,117,.03) 0 1px,transparent 1px 86px) !important;
+}
+.sol-ficha{
+  background:rgba(5,17,30,.38) !important;
+  border-color:rgba(143,178,214,.2) !important;
+  padding:0 !important;
+}
+.sol-card.open .sol-ficha{
+  max-height:380px !important;
+  margin-top:16px !important;
+  padding:8px 0 !important;
+}
+.frow{
+  display:grid !important;
+  grid-template-columns:minmax(86px,.7fr) minmax(0,1.3fr);
+  align-items:start;
+  gap:12px !important;
+  padding:12px 0 !important;
+}
+.frow span:first-child{
+  color:rgba(143,178,214,.72) !important;
+}
+.frow span:last-child{
+  color:rgba(246,243,236,.88) !important;
+  text-align:right;
+  overflow-wrap:anywhere;
+}
+.faq details{
+  overflow:hidden;
+}
+.faq details p{
+  max-height:0;
+  opacity:0;
+  transform:translateY(-4px);
+  transition:max-height .32s ease,opacity .25s ease,transform .25s ease,margin-top .25s ease;
+}
+.faq details[open] p{
+  max-height:160px;
+  opacity:1;
+  transform:none;
+}
+.join-section-sub + .fin-grid{
+  margin-top:30px;
+}
+.pay-feat{
+  transition:border-color .24s ease,background-color .24s ease,transform .22s var(--ease-out);
+}
+.pay-feat p{
+  transition:opacity .24s ease,transform .24s ease;
+}
+.pay-feat[open]{
+  border-color:rgba(143,178,214,.38) !important;
+  background:rgba(143,178,214,.08) !important;
+}
+.cta form.is-sending{
+  opacity:.82;
+}
+.cta form button[disabled]{
+  cursor:wait;
+  filter:saturate(.85);
+}
+.vl2-form-feedback a{
+  color:#fff;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+@media(max-width:980px){
+  .nav-inner{
+    grid-template-columns:auto 1fr auto !important;
+  }
+  .menu-btn{
+    display:grid !important;
+    width:42px !important;
+    height:42px !important;
+    flex:0 0 42px;
+    border-radius:50% !important;
+    border:1px solid rgba(246,243,236,.22) !important;
+    background:rgba(246,243,236,.035) !important;
+  }
+  .nav-cta{
+    display:none !important;
+  }
+  .nav-links{
+    position:fixed !important;
+    top:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    left:auto !important;
+    width:min(84vw,340px) !important;
+    height:100dvh !important;
+    display:flex !important;
+    flex-direction:column;
+    align-items:stretch !important;
+    justify-content:flex-start;
+    gap:8px !important;
+    padding:96px 22px 24px !important;
+    border-left:1px solid rgba(246,243,236,.12) !important;
+    border-radius:0 !important;
+    background:linear-gradient(180deg,rgba(8,24,40,.98),rgba(2,8,15,.98)) !important;
+    box-shadow:-28px 0 80px rgba(0,0,0,.45) !important;
+    transform:translateX(105%) !important;
+    opacity:1 !important;
+    visibility:hidden;
+    pointer-events:none;
+    z-index:70;
+  }
+  .nav::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.42);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .22s ease;
+    z-index:60;
+  }
+  .nav.menu-open::before{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .nav.menu-open .nav-links{
+    transform:translateX(0) !important;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .nav-links a{
+    width:100%;
+    min-height:48px;
+    padding:12px 14px !important;
+    border-radius:14px;
+  }
+  .nav-mobile-cta{
+    display:inline-flex !important;
+    justify-content:center;
+    margin-top:10px;
+    color:#07111c !important;
+  }
+}
+@media(max-width:760px){
+  .pay-features{
+    grid-template-columns:1fr !important;
+  }
+  .pay-group{
+    margin-top:34px !important;
+  }
+}
+@media(max-width:520px){
+  .cover-sticky{
+    min-height:100svh;
+  }
+  .vl2-cover-hud{
+    width:min(104vw,390px) !important;
+    height:min(104vw,390px) !important;
+  }
+  .cover-caption{
+    bottom:16px !important;
+    min-height:78px;
+  }
+  .frow{
+    grid-template-columns:1fr;
+    gap:5px !important;
+  }
+  .frow span:last-child{
+    text-align:left;
+    font-size:13px !important;
+  }
+  .sol-card.open .sol-ficha{
+    padding:10px 12px !important;
+  }
+}
+@media(max-width:430px){
+  .brand img{
+    height:36px !important;
+    max-width:136px !important;
+  }
+  .nav-inner{
+    min-height:74px;
+  }
+  .menu-btn{
+    width:40px !important;
+    height:40px !important;
+  }
+  .vl2-cover-hud{
+    width:min(112vw,382px) !important;
+    height:min(112vw,382px) !important;
+  }
+  .vl2-wa{
+    right:12px !important;
+    bottom:12px !important;
+    padding:10px 13px !important;
+  }
+}
+
+/* final logo readability polish */
+.solutions .wrap{
+  padding-inline:clamp(24px,4vw,56px);
+}
+.sol-grid{
+  gap:clamp(22px,3vw,34px) !important;
+}
+.sol-card{
+  padding:clamp(30px,3.2vw,42px) clamp(30px,3.4vw,44px) !important;
+}
+.sol-card.open .sol-ficha{
+  margin-top:20px !important;
+  padding:14px 16px !important;
+}
+.frow{
+  grid-template-columns:minmax(120px,.62fr) minmax(0,1.38fr) !important;
+  gap:18px !important;
+}
+
+.partner-logos{
+  padding:clamp(60px,7vw,96px) 0 clamp(68px,7vw,104px) !important;
+}
+.partner-logos .wrap{
+  max-width:1760px !important;
+  padding-inline:clamp(32px,4vw,64px) !important;
+}
+.partner-logos .partner-head{
+  max-width:880px !important;
+  margin-bottom:clamp(34px,4vw,58px) !important;
+}
+.partner-logo-grid{
+  grid-template-columns:repeat(5,minmax(180px,1fr)) !important;
+  gap:clamp(24px,2.6vw,40px) !important;
+}
+.partner-logo,
+.rel-strip .liquidity-logo,
+.reg .seal.logo{
+  background:#f3f0ea !important;
+  border:1px solid rgba(246,243,236,.2) !important;
+  box-shadow:0 20px 50px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.75) !important;
+}
+.partner-logo{
+  height:104px !important;
+  border-radius:12px !important;
+  padding:18px 26px !important;
+}
+.partner-logo img{
+  max-width:100% !important;
+  width:auto !important;
+  object-fit:contain !important;
+}
+.partner-logo--acindar img{max-height:54px !important}
+.partner-logo--argenpymes img{max-height:58px !important}
+.partner-logo--trend img{max-height:60px !important}
+.partner-logo--balanz img,
+.partner-logo--adcap img{max-height:68px !important}
+
+.rel-strip{
+  margin-top:34px !important;
+  gap:18px !important;
+  padding-inline:clamp(12px,2vw,28px);
+}
+.rel-strip .rel-label{
+  margin-right:4px;
+}
+.rel-strip .liquidity-logo{
+  width:190px !important;
+  min-width:190px !important;
+  height:92px !important;
+  padding:16px 24px !important;
+  border-radius:18px !important;
+}
+.rel-strip .liquidity-logo img{
+  max-width:100% !important;
+  max-height:64px !important;
+  width:auto !important;
+  height:auto !important;
+}
+.rel-strip .liquidity-logo--balanz img,
+.rel-strip .liquidity-logo--adcap img{
+  max-height:70px !important;
+}
+.reg-inner{
+  grid-template-columns:minmax(0,1.25fr) minmax(380px,.75fr) !important;
+  gap:clamp(56px,7vw,110px) !important;
+}
+.reg .seals{
+  grid-template-columns:repeat(2,minmax(190px,230px)) !important;
+  gap:24px !important;
+}
+.reg .seal.logo{
+  height:106px !important;
+  padding:20px 28px !important;
+  border-radius:18px !important;
+}
+.reg .seal.logo img{
+  max-width:176px !important;
+  max-height:66px !important;
+  width:auto !important;
+  height:auto !important;
+}
+.reg .seal-logo--cnv img{max-width:184px !important}
+.reg .seal-logo--byma img{max-width:170px !important}
+
+@media(max-width:1180px){
+  .partner-logo-grid{
+    grid-template-columns:repeat(3,minmax(180px,1fr)) !important;
+  }
+  .reg-inner{
+    grid-template-columns:1fr !important;
+  }
+  .reg .seals{
+    justify-content:start !important;
+  }
+}
+@media(max-width:760px){
+  .solutions .wrap{
+    padding-inline:26px !important;
+  }
+  .sol-card{
+    padding:28px 24px !important;
+  }
+  .frow{
+    grid-template-columns:1fr !important;
+    gap:6px !important;
+  }
+  .frow span:last-child{
+    text-align:left !important;
+  }
+  .partner-logos .wrap{
+    padding-inline:24px !important;
+  }
+  .partner-logo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:16px !important;
+  }
+  .partner-logo{
+    height:94px !important;
+    padding:16px 18px !important;
+  }
+  .partner-logo--acindar img,
+  .partner-logo--argenpymes img,
+  .partner-logo--trend img{max-height:50px !important}
+  .partner-logo--balanz img,
+  .partner-logo--adcap img{max-height:62px !important}
+  .rel-strip{
+    display:grid !important;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+  }
+  .rel-strip .rel-label,
+  .rel-strip .rel-more{
+    grid-column:1 / -1;
+  }
+  .rel-strip .liquidity-logo{
+    width:100% !important;
+    min-width:0 !important;
+    height:86px !important;
+  }
+  .reg .seals{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    width:100%;
+  }
+  .reg .seal.logo{
+    height:94px !important;
+    padding:18px 20px !important;
+  }
+}
+@media(max-width:480px){
+  .partner-logo-grid{
+    grid-template-columns:1fr !important;
+  }
+  .partner-logo{
+    max-width:none !important;
+    height:92px !important;
+  }
+  .rel-strip{
+    grid-template-columns:1fr;
+  }
+  .rel-strip .liquidity-logo{
+    height:82px !important;
+  }
+  .reg .seals{
+    grid-template-columns:1fr !important;
+    max-width:none !important;
+  }
+}
+
+/* desktop downloaded logos final tuning */
+.partner-logo{
+  height:112px !important;
+  padding:18px 28px !important;
+}
+.partner-logo--acindar img{
+  max-height:58px !important;
+  max-width:94% !important;
+}
+.partner-logo--argenpymes img{
+  max-height:78px !important;
+  max-width:96% !important;
+}
+.partner-logo--trend img{
+  max-height:78px !important;
+  max-width:98% !important;
+}
+.partner-logo--balanz img,
+.partner-logo--adcap img{
+  max-height:82px !important;
+  max-width:82px !important;
+}
+.rel-strip .liquidity-logo{
+  height:100px !important;
+  width:210px !important;
+  min-width:210px !important;
+  padding:16px 28px !important;
+}
+.rel-strip .liquidity-logo--balanz img,
+.rel-strip .liquidity-logo--adcap img{
+  max-height:82px !important;
+  max-width:82px !important;
+}
+.reg .seal.logo{
+  height:112px !important;
+  padding:22px 30px !important;
+}
+.reg .seal-logo--cnv img{
+  max-width:196px !important;
+  max-height:76px !important;
+}
+.reg .seal-logo--byma img{
+  max-width:186px !important;
+  max-height:76px !important;
+}
+
+@media(max-width:760px){
+  .partner-logo{
+    height:104px !important;
+  }
+  .partner-logo--balanz img,
+  .partner-logo--adcap img{
+    max-height:74px !important;
+    max-width:74px !important;
+  }
+  .rel-strip .liquidity-logo{
+    height:94px !important;
+    width:100% !important;
+    min-width:0 !important;
+  }
+  .rel-strip .liquidity-logo--balanz img,
+  .rel-strip .liquidity-logo--adcap img{
+    max-height:76px !important;
+    max-width:76px !important;
+  }
+}
+@media(max-width:480px){
+  .partner-logo{
+    height:100px !important;
+    padding:16px 22px !important;
+  }
+  .partner-logo--argenpymes img,
+  .partner-logo--trend img{
+    max-height:72px !important;
+  }
+}
+
+/* cover reference match - remove grid overlay */
+.cover-brain{
+  background:
+    radial-gradient(92% 82% at 50% 48%, rgba(27,58,92,.22), transparent 58%),
+    radial-gradient(70% 70% at 48% 45%, rgba(143,178,214,.10), transparent 66%),
+    #01040a !important;
+}
+.cover-brain::before{
+  background:
+    conic-gradient(from 212deg at 50% 50%, transparent 0 18%, rgba(143,178,214,.055) 25%, transparent 33%, transparent 59%, rgba(210,183,117,.06) 66%, transparent 76%),
+    radial-gradient(68% 54% at 50% 48%, rgba(143,178,214,.075), transparent 70%) !important;
+  opacity:.46 !important;
+  mix-blend-mode:screen;
+}
+.cover-brain::after{
+  background:
+    radial-gradient(ellipse at 50% 48%, transparent 0 50%, rgba(1,4,10,.34) 74%, rgba(1,4,10,.92) 100%),
+    linear-gradient(180deg, rgba(1,4,10,.08), transparent 32%, rgba(1,4,10,.18)) !important;
+}
+.vl2-cover-hud{
+  width:min(68vw,84vh,840px) !important;
+  height:min(68vw,84vh,840px) !important;
+}
+.vl2-cover-hud::before{
+  inset:13% !important;
+  border-color:rgba(210,183,117,.13) !important;
+  box-shadow:0 0 34px rgba(143,178,214,.045), inset 0 0 34px rgba(210,183,117,.035) !important;
+}
+.cover-caption{
+  bottom:clamp(28px,4.8vh,52px) !important;
+}
+@media(max-width:640px){
+  .vl2-cover-hud{
+    width:min(92vw,54vh) !important;
+    height:min(92vw,54vh) !important;
+  }
+}
+
+/* logo natural-size strip */
+.partner-logo-grid{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:clamp(34px,4vw,72px) !important;
+  flex-wrap:nowrap !important;
+}
+.partner-logo{
+  width:auto !important;
+  min-width:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+  flex:0 0 auto !important;
+}
+.partner-logo:hover{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  transform:translateY(-1px) !important;
+}
+.partner-logo img{
+  display:block !important;
+  width:auto !important;
+  height:64px !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:contain !important;
+}
+.partner-logo--acindar img{
+  height:58px !important;
+}
+.partner-logo--argenpymes img,
+.partner-logo--trend img{
+  height:64px !important;
+}
+.partner-logo--balanz img,
+.partner-logo--adcap img{
+  height:68px !important;
+}
+.rel-strip .liquidity-logo{
+  width:auto !important;
+  min-width:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+.rel-strip .liquidity-logo img{
+  height:68px !important;
+  width:auto !important;
+  max-width:none !important;
+  max-height:none !important;
+}
+
+@media(max-width:1180px){
+  .partner-logo-grid{
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:28px 46px !important;
+  }
+}
+@media(max-width:760px){
+  .partner-logo-grid{
+    gap:24px 34px !important;
+  }
+  .partner-logo img{
+    height:54px !important;
+  }
+  .partner-logo--acindar img{
+    height:48px !important;
+  }
+  .partner-logo--balanz img,
+  .partner-logo--adcap img{
+    height:58px !important;
+  }
+  .rel-strip .liquidity-logo img{
+    height:58px !important;
+  }
+}
+@media(max-width:480px){
+  .partner-logo-grid{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    justify-items:center !important;
+    gap:24px 22px !important;
+  }
+  .partner-logo img{
+    height:48px !important;
+  }
+  .partner-logo--acindar img{
+    height:42px !important;
+  }
+  .partner-logo--balanz img,
+  .partner-logo--adcap img{
+    height:52px !important;
+  }
+}
+
+/* logo grid final sane layout */
+.partner-logos{
+  overflow:hidden;
+}
+.partner-logos .wrap{
+  max-width:1780px !important;
+  padding-inline:clamp(42px,4vw,72px) !important;
+}
+.partner-logo-grid{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  align-items:center !important;
+  gap:clamp(22px,2.4vw,38px) !important;
+  width:100% !important;
+  overflow:visible !important;
+}
+.partner-logo-grid .partner-logo,
+.partner-logo{
+  box-sizing:border-box !important;
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  height:118px !important;
+  min-height:118px !important;
+  padding:20px 26px !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#f2eee8 !important;
+  border:1px solid rgba(246,243,236,.18) !important;
+  border-radius:14px !important;
+  box-shadow:0 22px 48px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.75) !important;
+  overflow:hidden !important;
+  flex:none !important;
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+}
+.partner-logo-grid .partner-logo:hover,
+.partner-logo:hover{
+  transform:translateY(-2px) !important;
+  border-color:rgba(143,178,214,.38) !important;
+  box-shadow:0 26px 58px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.8) !important;
+}
+.partner-logo-grid .partner-logo img,
+.partner-logo img{
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  max-width:92% !important;
+  max-height:76px !important;
+  object-fit:contain !important;
+  border-radius:0 !important;
+}
+.partner-logo--acindar img{
+  max-height:58px !important;
+  max-width:94% !important;
+}
+.partner-logo--argenpymes img{
+  max-height:78px !important;
+  max-width:88% !important;
+}
+.partner-logo--trend img{
+  max-height:78px !important;
+  max-width:94% !important;
+}
+.partner-logo--balanz img,
+.partner-logo--adcap img{
+  max-height:76px !important;
+  max-width:76px !important;
+}
+
+.rel-strip .liquidity-logo{
+  box-sizing:border-box !important;
+  width:176px !important;
+  min-width:176px !important;
+  height:96px !important;
+  min-height:96px !important;
+  padding:16px 24px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#f2eee8 !important;
+  border:1px solid rgba(246,243,236,.18) !important;
+  border-radius:16px !important;
+  box-shadow:0 18px 42px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.75) !important;
+  overflow:hidden !important;
+}
+.rel-strip .liquidity-logo img{
+  width:auto !important;
+  height:auto !important;
+  max-width:72px !important;
+  max-height:72px !important;
+  object-fit:contain !important;
+}
+
+@media(max-width:1180px){
+  .partner-logo-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:760px){
+  .partner-logos .wrap{
+    padding-inline:24px !important;
+  }
+  .partner-logo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:16px !important;
+  }
+  .partner-logo-grid .partner-logo,
+  .partner-logo{
+    height:96px !important;
+    min-height:96px !important;
+    padding:16px 18px !important;
+  }
+  .partner-logo-grid .partner-logo img,
+  .partner-logo img{
+    max-height:62px !important;
+  }
+  .partner-logo--acindar img{max-height:48px !important}
+  .partner-logo--balanz img,
+  .partner-logo--adcap img{
+    max-width:62px !important;
+    max-height:62px !important;
+  }
+  .rel-strip .liquidity-logo{
+    width:100% !important;
+    min-width:0 !important;
+    height:88px !important;
+    min-height:88px !important;
+  }
+  .rel-strip .liquidity-logo img{
+    max-width:64px !important;
+    max-height:64px !important;
+  }
+}
+@media(max-width:430px){
+  .partner-logo-grid{
+    grid-template-columns:1fr !important;
+  }
+  .partner-logo-grid .partner-logo,
+  .partner-logo{
+    height:92px !important;
+    min-height:92px !important;
+  }
+}
+
+/* logo photo-first final */
+.partner-logos {
+  overflow: hidden !important;
+}
+
+.partner-logos .wrap {
+  max-width: 1780px !important;
+  padding-inline: clamp(42px, 4vw, 72px) !important;
+}
+
+.partner-logo-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  align-items: center !important;
+  justify-items: center !important;
+  gap: clamp(30px, 4vw, 72px) !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.partner-logo-grid .partner-logo,
+.partner-logo {
+  box-sizing: border-box !important;
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 112px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  flex: none !important;
+  transition: transform .18s ease, filter .18s ease !important;
+}
+
+.partner-logo-grid .partner-logo:hover,
+.partner-logo:hover {
+  transform: translateY(-2px) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: brightness(1.06) contrast(1.03) !important;
+}
+
+.partner-logo-grid .partner-logo img,
+.partner-logo img {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, .2)) !important;
+}
+
+.partner-logo--acindar img {
+  max-width: min(250px, 100%) !important;
+  max-height: 72px !important;
+}
+
+.partner-logo--argenpymes img {
+  max-width: min(260px, 100%) !important;
+  max-height: 92px !important;
+}
+
+.partner-logo--trend img {
+  max-width: min(300px, 100%) !important;
+  max-height: 92px !important;
+}
+
+.partner-logo--balanz img,
+.partner-logo--adcap img {
+  max-width: 104px !important;
+  max-height: 104px !important;
+  border-radius: 8px !important;
+}
+
+.rel-strip .liquidity-logo {
+  box-sizing: border-box !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: 92px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.rel-strip .liquidity-logo img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 92px !important;
+  max-height: 92px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, .2)) !important;
+}
+
+@media (max-width: 1180px) {
+  .partner-logo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 28px 54px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .partner-logos .wrap {
+    padding-inline: 24px !important;
+  }
+
+  .partner-logo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px 26px !important;
+  }
+
+  .partner-logo-grid .partner-logo,
+  .partner-logo {
+    height: 86px !important;
+  }
+
+  .partner-logo--acindar img {
+    max-width: 172px !important;
+    max-height: 54px !important;
+  }
+
+  .partner-logo--argenpymes img,
+  .partner-logo--trend img {
+    max-width: 180px !important;
+    max-height: 68px !important;
+  }
+
+  .partner-logo--balanz img,
+  .partner-logo--adcap img {
+    max-width: 76px !important;
+    max-height: 76px !important;
+  }
+
+  .rel-strip .liquidity-logo {
+    height: 78px !important;
+  }
+
+  .rel-strip .liquidity-logo img {
+    max-width: 76px !important;
+    max-height: 76px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .partner-logo-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .partner-logo-grid .partner-logo,
+  .partner-logo {
+    height: 76px !important;
+  }
+}
+
+/* regulatory logo final polish */
+.reg .seals {
+  display: flex !important;
+  gap: 28px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+}
+
+.reg .seal.logo,
+.reg .seal.logo:hover,
+.reg .seal.logo:focus,
+.reg .seal.logo:focus-visible {
+  box-sizing: border-box !important;
+  width: clamp(210px, 17vw, 238px) !important;
+  height: clamp(118px, 9.6vw, 140px) !important;
+  padding: 26px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #fff !important;
+  border: 0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 24px 58px rgba(0, 0, 0, .18) !important;
+  outline: none !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.reg .seal.logo img,
+.reg .seal.logo:hover img,
+.reg .seal.logo:focus img {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+.reg .seal.logo .logo-fallback {
+  display: none !important;
+}
+
+.reg .seal-logo--cnv img {
+  max-width: 204px !important;
+  max-height: 82px !important;
+}
+
+.reg .seal-logo--byma img {
+  max-width: 196px !important;
+  max-height: 82px !important;
+}
+
+@media (max-width: 760px) {
+  .reg .seals {
+    gap: 16px !important;
+  }
+
+  .reg .seal.logo,
+  .reg .seal.logo:hover,
+  .reg .seal.logo:focus,
+  .reg .seal.logo:focus-visible {
+    width: min(100%, 220px) !important;
+    height: 112px !important;
+    padding: 22px 16px !important;
+    border-radius: 18px !important;
+  }
+}
+
+/* regulatory logo size reset */
+.reg .seals {
+  display: flex !important;
+  gap: 16px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+}
+
+.reg .seal.logo,
+.reg .seal.logo:hover,
+.reg .seal.logo:focus,
+.reg .seal.logo:focus-visible {
+  width: 132px !important;
+  height: 72px !important;
+  min-width: 132px !important;
+  padding: 13px 18px !important;
+  background: #fff !important;
+  border: 1px solid #fff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 18px 40px -34px rgba(0, 0, 0, .72) !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.reg .seal.logo img,
+.reg .seal.logo:hover img,
+.reg .seal.logo:focus img {
+  width: 100% !important;
+  height: 42px !important;
+  max-height: 42px !important;
+  object-fit: contain !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.reg .seal-logo--cnv img {
+  max-width: 92px !important;
+}
+
+.reg .seal-logo--byma img {
+  max-width: 84px !important;
+}
+
+@media (max-width: 760px) {
+  .reg .seals {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  .reg .seal.logo,
+  .reg .seal.logo:hover,
+  .reg .seal.logo:focus,
+  .reg .seal.logo:focus-visible {
+    width: 116px !important;
+    height: 64px !important;
+    min-width: 116px !important;
+    padding: 12px 16px !important;
+  }
+
+  .reg .seal.logo img,
+  .reg .seal.logo:hover img,
+  .reg .seal.logo:focus img {
+    height: 38px !important;
+    max-height: 38px !important;
+  }
+
+  .reg .seal-logo--cnv img {
+    max-width: 84px !important;
+  }
+
+  .reg .seal-logo--byma img {
+    max-width: 78px !important;
+  }
+}

@@ -9,6 +9,7 @@ export default function Header() {
         </a>
         <nav className="nav-links" id="main-menu" aria-label="Navegación principal">
           {navLinks.map(([href, label]) => <a href={href} key={href}>{label}</a>)}
+          <a className="btn btn-primary nav-mobile-cta" href="#contacto">Agendar una reunión</a>
         </nav>
         <div className="nav-cta">
           <a className="btn btn-primary" href="#contacto">Agendar una reunión</a>

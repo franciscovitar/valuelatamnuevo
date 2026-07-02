@@ -1,9 +1,9 @@
 const partnerLogos = [
-  { src: '/acindar.png', alt: 'Acindar' },
-  { src: '/argenpymes.jpg', alt: 'Argenpymes' },
-  { src: '/trend.jpg', alt: 'Trend' },
-  { src: '/balanz.jpg', alt: 'Balanz' },
-  { src: '/adcap.jpg', alt: 'AdCap' },
+  { src: '/logos/acindar-clean.png', alt: 'Acindar' },
+  { src: '/logos/argenpymes-clean.png', alt: 'Argenpymes' },
+  { src: '/logos/trend-clean.png', alt: 'Trend' },
+  { src: '/logos/balanz-clean.png', alt: 'Balanz' },
+  { src: '/logos/adcap-clean.png', alt: 'AdCap' },
 ];
 
 function logoClass(name) {

@@ -10,6 +10,8 @@ export function initNavigationCards() {
       document.body.classList.toggle('menu-open', open);
       menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
       menuButton.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      navLinks.toggleAttribute('inert', !open && window.matchMedia('(max-width: 980px)').matches);
+      navLinks.toggleAttribute('inert', !open && window.matchMedia('(max-width: 980px)').matches);
     };
     const onMenuClick = () => setMenu(!nav.classList.contains('menu-open'));
     const onKeyDown = (event) => {
