@@ -1,9 +1,9 @@
 const partnerLogos = [
-  { src: '/acindar-clean.png', alt: 'Acindar Pymes', slug: 'acindar', variant: 'plain' },
-  { src: '/argenpymes-clean.png', alt: 'Argenpymes', slug: 'argenpymes', variant: 'plain' },
-  { src: '/trend-clean.png', alt: 'Trend Capital', slug: 'trend', variant: 'plain' },
-  { src: '/balanz-clean.png', alt: 'Balanz', slug: 'balanz', variant: 'badge' },
-  { src: '/adcap-clean.png', alt: 'AdCap', slug: 'adcap', variant: 'badge' },
+  { src: '/logos/acindar.png', alt: 'Acindar Pymes', slug: 'acindar', variant: 'plain' },
+  { src: '/logos/argenpymes.jpg', alt: 'Argenpymes', slug: 'argenpymes', variant: 'plain' },
+  { src: '/logos/trend.jpg', alt: 'Trend Capital', slug: 'trend', variant: 'plain' },
+  { src: '/logos/balanz-clean.png', alt: 'Balanz', slug: 'balanz', variant: 'badge' },
+  { src: '/logos/adcap-clean.png', alt: 'AdCap', slug: 'adcap', variant: 'badge' },
 ];
 
 export default function PartnerLogos() {
