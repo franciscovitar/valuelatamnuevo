@@ -1,7 +1,7 @@
 const partnerLogos = [
   { src: '/logos/acindar.png', alt: 'Acindar Pymes', slug: 'acindar', variant: 'plain' },
-  { src: '/logos/argenpymes.jpg', alt: 'Argenpymes', slug: 'argenpymes', variant: 'plain' },
-  { src: '/logos/trend.jpg', alt: 'Trend Capital', slug: 'trend', variant: 'plain' },
+  { src: '/logos/argenpymes.png', alt: 'Argenpymes', slug: 'argenpymes', variant: 'plain' },
+  { src: '/logos/trend.png', alt: 'Trend Capital', slug: 'trend', variant: 'plain' },
   { src: '/logos/balanz-clean.png', alt: 'Balanz', slug: 'balanz', variant: 'badge' },
   { src: '/logos/adcap-clean.png', alt: 'AdCap', slug: 'adcap', variant: 'badge' },
 ];
