@@ -63,15 +63,15 @@
   @media(max-width:640px){
     .vl2-wa{right:12px;bottom:12px;padding:11px 13px;font-size:13px}
     .sound-toggle{bottom:70px}
-    .vl2-cover-hud{top:50%;width:min(100vw,62vh);height:min(100vw,62vh);max-width:none;max-height:none}
+    .vl2-cover-hud{top:51.8%;width:min(100vw,62vh);height:min(100vw,62vh);max-width:none;max-height:none}
     .vl2-cover-note{display:none}
     .cover-brain::after{
       background:
-        radial-gradient(ellipse at 50% 50%,transparent 0 48%,rgba(1,4,10,.38) 74%,rgba(1,4,10,.88) 100%),
+        radial-gradient(ellipse at 50% 51.8%,transparent 0 48%,rgba(1,4,10,.38) 74%,rgba(1,4,10,.88) 100%),
         linear-gradient(180deg,rgba(1,4,10,.12),transparent 30%,rgba(1,4,10,.22));
     }
   }
 
 
 
-@media(max-width:560px){.nav .btn-primary{padding:9px 13px;font-size:12px;line-height:1.05;max-width:170px;white-space:normal}.nav .btn-primary::after{margin-left:4px}.nav-inner{gap:10px}}
+ @media(max-width:560px){.nav .btn-primary{padding:9px 13px;font-size:12px;line-height:1.05;max-width:170px;white-space:normal}.nav .btn-primary::after{margin-left:4px}.nav-inner{gap:10px}}

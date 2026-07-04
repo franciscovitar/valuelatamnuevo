@@ -46,10 +46,10 @@ export function initCoverAnimation() {
 
   /*
     Mobile-only layout:
-    - Se abre el mapa horizontalmente para que las líneas laterales respiren.
-    - Financiación y medios de pago quedan un poco más cerca del hub para que sus líneas no se vuelvan tan largas.
-    - Agentes IA queda más cerca de su nodo para que no parezca desconectado.
-    - Todo queda centrado verticalmente en el canvas mobile.
+    - Mantenemos el desktop intacto.
+    - Bajamos apenas el centro visual para que en celular no quede pegado arriba.
+    - Acercamos Agentes IA a su nodo y acortamos el gap visual entre label/nodo.
+    - La creación de líneas en mobile queda directa al scroll, sin easing ni “arrastre”.
   */
   const mobilePositions = {
     hub: [0.5, 0.5],
@@ -59,7 +59,7 @@ export function initCoverAnimation() {
     pay: [0.5, 0.725],
     tax: [0.235, 0.62],
     ai: [0.22, 0.39],
-    ops: [0.305, 0.505],
+    ops: [0.335, 0.505],
   };
 
   const mobileLabelOffsets = {
@@ -69,7 +69,7 @@ export function initCoverAnimation() {
     pay: { x: 0, y: 38 },
     tax: { x: -88, y: 28 },
     ai: { x: -88, y: -4 },
-    ops: { x: -44, y: 0 },
+    ops: { x: -24, y: -2 },
   };
 
   const links = [
@@ -170,7 +170,7 @@ export function initCoverAnimation() {
     const isMobile = mobileQuery.matches;
     const coords = isMobile && mobilePositions[node.id] ? mobilePositions[node.id] : [node.x, node.y];
     const scale = Math.min(w, h) * (isMobile ? 0.78 : 0.62);
-    const centerY = h * (isMobile ? 0.5 : 0.5);
+    const centerY = h * (isMobile ? 0.518 : 0.5);
     return {
       x: w * 0.5 + ((coords[0] - 0.5) * scale) + parallaxX * (node.id === 'hub' ? 0.2 : 1),
       y: centerY + ((coords[1] - 0.5) * scale) + parallaxY * (node.id === 'hub' ? 0.2 : 1),
@@ -261,7 +261,7 @@ export function initCoverAnimation() {
     const isMobile = mobileQuery.matches;
     const drawAmount = isMobile ? clamp(amount, 0, 1) : appear(amount);
     if (drawAmount <= 0.01) return;
-    const power = appear(strength);
+    const power = isMobile ? clamp(strength, 0, 1) : appear(strength);
     const dx = b.x - a.x;
     const dy = b.y - a.y;
     const len = Math.max(1, Math.hypot(dx, dy));
@@ -271,20 +271,20 @@ export function initCoverAnimation() {
     const sy = a.y + (dy / len) * startGap;
     const ex = b.x - (dx / len) * endGap;
     const ey = b.y - (dy / len) * endGap;
-    const bend = isMobile ? 0.045 : 0.14;
+    const bend = isMobile ? 0.035 : 0.14;
     const mx = (sx + ex) / 2 + (ey - sy) * bend;
     const my = (sy + ey) / 2 - (ex - sx) * bend;
 
     ctx.save();
-    ctx.strokeStyle = `rgba(${color.join(',')}, ${0.15 + 0.38 * power})`;
-    ctx.lineWidth = isMobile ? 0.9 + 0.45 * power : 1 + 0.65 * power;
+    ctx.strokeStyle = `rgba(${color.join(',')}, ${0.17 + 0.36 * power})`;
+    ctx.lineWidth = isMobile ? 0.95 + 0.42 * power : 1 + 0.65 * power;
     const head = drawPartialCurve(sx, sy, mx, my, ex, ey, drawAmount);
 
-    if (head && power > 0.04) {
+    if (head && power > 0.04 && !isMobile) {
       ctx.globalCompositeOperation = 'screen';
-      ctx.fillStyle = `rgba(${color.join(',')}, ${isMobile ? 0.16 + 0.22 * power : 0.26 + 0.35 * power})`;
+      ctx.fillStyle = `rgba(${color.join(',')}, ${0.26 + 0.35 * power})`;
       ctx.beginPath();
-      ctx.arc(head.x, head.y, isMobile ? 1.45 + power * 0.65 : 1.8 + power, 0, Math.PI * 2);
+      ctx.arc(head.x, head.y, 1.8 + power, 0, Math.PI * 2);
       ctx.fill();
     }
     ctx.restore();
@@ -334,7 +334,7 @@ export function initCoverAnimation() {
     rafId = requestAnimationFrame(draw);
     if (!active && Math.abs(progress - targetProgress) < 0.002) return;
 
-    const minFrame = tabletQuery.matches ? 28 : 20;
+    const minFrame = mobileQuery.matches ? 0 : (tabletQuery.matches ? 28 : 20);
     if (timestamp - lastFrame < minFrame) return;
     lastFrame = timestamp;
 
@@ -350,8 +350,10 @@ export function initCoverAnimation() {
     parallaxY += (targetParallaxY - parallaxY) * 0.08;
     updateCaption();
 
+    const mobileCenterY = mobileQuery.matches ? h * 0.518 : h * 0.5;
+
     ctx.clearRect(0, 0, w, h);
-    const g = ctx.createRadialGradient(w * 0.5, h * 0.5, 10, w * 0.5, h * 0.5, Math.min(w, h) * 0.62);
+    const g = ctx.createRadialGradient(w * 0.5, mobileCenterY, 10, w * 0.5, mobileCenterY, Math.min(w, h) * 0.62);
     g.addColorStop(0, 'rgba(27,58,92,.28)');
     g.addColorStop(0.55, 'rgba(1,4,10,.22)');
     g.addColorStop(1, 'rgba(1,4,10,0)');
@@ -365,13 +367,13 @@ export function initCoverAnimation() {
     for (let i = 0; i < 4; i += 1) {
       const radius = Math.min(w, h) * (mobileQuery.matches ? 0.145 + i * 0.077 : 0.16 + i * 0.085);
       ctx.beginPath();
-      ctx.arc(w * 0.5 + parallaxX * 0.15, h * 0.5 + parallaxY * 0.15, radius, 0, Math.PI * 2);
+      ctx.arc(w * 0.5 + parallaxX * 0.15, mobileCenterY + parallaxY * 0.15, radius, 0, Math.PI * 2);
       ctx.stroke();
     }
     ctx.restore();
 
     const cx = w / 2 + parallaxX * 0.28;
-    const cy = h / 2 + parallaxY * 0.28;
+    const cy = mobileCenterY + parallaxY * 0.28;
     const particleScale = Math.min(w, h) * (mobileQuery.matches ? 0.31 : 0.36);
     particles.forEach((particle) => {
       const visible = smooth(particle.show, particle.show + 0.42, progress);
@@ -394,7 +396,7 @@ export function initCoverAnimation() {
     const linkProgress = {};
     links.forEach(([from, to, start]) => {
       linkProgress[`${from}>${to}`] = mobileQuery.matches
-        ? linear(start, start + 0.18, progress)
+        ? linear(start, start + 0.11, progress)
         : smooth(start, start + 0.16, progress);
     });
 
