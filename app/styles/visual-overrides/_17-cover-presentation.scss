@@ -33,24 +33,13 @@
   .hero-title .hero-badge{display:inline-block;margin-top:18px}
 
   @media(max-width:640px){
-    .cover-scroll{height:370vh}
+    .cover-scroll{height:380vh}
     .cover-caption{
-      bottom:clamp(104px,14vh,132px);
-      left:0;
-      right:0;
+      bottom:clamp(92px,14vh,126px);
       justify-content:flex-start;
+      padding:0 28px 0 42px;
       gap:13px;
-      padding:0 34px 0 42px;
     }
-    .cover-caption .pb-step{font-size:30px}
-    .cover-caption .pb-txt{font-size:14.5px;line-height:1.42;max-width:295px}
-  }
-
-  @media(max-width:390px){
-    .cover-caption{
-      padding:0 28px 0 32px;
-      bottom:clamp(100px,13vh,124px);
-    }
-    .cover-caption .pb-step{font-size:28px}
-    .cover-caption .pb-txt{font-size:13.8px;max-width:270px}
+    .cover-caption .pb-step{font-size:27px}
+    .cover-caption .pb-txt{font-size:14px;line-height:1.42;max-width:300px}
   }

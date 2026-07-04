@@ -24,7 +24,7 @@
   .cover-brain::after{
     content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
     background:
-      radial-gradient(ellipse at 50% 47%,transparent 0 42%,rgba(1,4,10,.42) 72%,rgba(1,4,10,.86) 100%),
+      radial-gradient(ellipse at 50% 50%,transparent 0 42%,rgba(1,4,10,.42) 72%,rgba(1,4,10,.86) 100%),
       linear-gradient(180deg,rgba(1,4,10,.12),transparent 30%,rgba(1,4,10,.22));
   }
   @keyframes vl2-cinema-sweep{
@@ -61,44 +61,15 @@
   }
   .vl2-form-feedback{margin-top:12px;color:var(--brass-2);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em}
   @media(max-width:640px){
-    .cover-scroll{height:370vh}
     .vl2-wa{right:12px;bottom:12px;padding:11px 13px;font-size:13px}
     .sound-toggle{bottom:70px}
-    .cover-brain{
-      background:
-        radial-gradient(96% 62% at 50% 40%,rgba(68,115,159,.22),transparent 65%),
-        radial-gradient(76% 52% at 48% 39%,rgba(191,160,90,.07),transparent 68%),
-        #01040a;
-    }
-    .cover-brain::before{
-      inset:-24%;
-      opacity:.62;
-      background:
-        conic-gradient(from 220deg at 50% 42%,transparent 0 18%,rgba(143,178,214,.09) 25%,transparent 35%,transparent 58%,rgba(210,183,117,.08) 66%,transparent 76%),
-        radial-gradient(68% 48% at 50% 42%,rgba(143,178,214,.11),transparent 72%);
-    }
+    .vl2-cover-hud{top:50%;width:min(100vw,62vh);height:min(100vw,62vh);max-width:none;max-height:none}
+    .vl2-cover-note{display:none}
     .cover-brain::after{
       background:
-        radial-gradient(ellipse at 50% 42%,transparent 0 44%,rgba(1,4,10,.38) 72%,rgba(1,4,10,.9) 100%),
-        linear-gradient(180deg,rgba(1,4,10,.08),transparent 28%,rgba(1,4,10,.28));
+        radial-gradient(ellipse at 50% 50%,transparent 0 48%,rgba(1,4,10,.38) 74%,rgba(1,4,10,.88) 100%),
+        linear-gradient(180deg,rgba(1,4,10,.12),transparent 30%,rgba(1,4,10,.22));
     }
-    .vl2-cover-hud{
-      top:42%;
-      width:min(108vw,54vh,440px);
-      height:min(108vw,54vh,440px);
-      max-width:none;max-height:none;
-    }
-    .vl2-cover-hud::before{
-      inset:8%;
-      opacity:.68;
-      box-shadow:0 0 34px rgba(143,178,214,.08),inset 0 0 34px rgba(210,183,117,.045);
-    }
-    .vl2-cover-hud::after{
-      font-size:9.5px;
-      letter-spacing:.24em;
-      padding:8px 13px;
-    }
-    .vl2-cover-note{display:none}
   }
 
 
