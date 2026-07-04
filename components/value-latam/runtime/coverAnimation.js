@@ -60,8 +60,8 @@ export function initCoverAnimation() {
     socios: [0.805, 0.665],
     pay: [0.5, 0.78],
     tax: [0.195, 0.665],
-    ai: [0.34, 0.39],
-    ops: [0.285, 0.555],
+    ai: [0.185, 0.39],
+    ops: [0.215, 0.555],
   };
 
   const mobileLabelOffsets = {
@@ -70,7 +70,7 @@ export function initCoverAnimation() {
     socios: { x: 108, y: 30 },
     pay: { x: 0, y: 42 },
     tax: { x: -108, y: 30 },
-    ai: { x: -110, y: -4 },
+    ai: { x: -74, y: -30 },
     ops: { x: -72, y: 2 },
   };
 
@@ -80,7 +80,7 @@ export function initCoverAnimation() {
     ['liq', 'socios', 0.39],
     ['hub', 'pay', 0.54],
     ['pay', 'tax', 0.5],
-    ['hub', 'ai', 0.78],
+    ['hub', 'ai', 0.68],
     ['ai', 'ops', 0.74],
   ];
 
