@@ -1,0 +1,377 @@
+/* ---------- PARTNER LOGOS INFINITE CAROUSEL V3 ---------- */
+/* Importado al final de app/value-latam.scss. Pisa la grilla vieja sin tocar otras secciones. */
+
+body .partner-logos-carousel {
+  overflow: hidden;
+}
+
+body .partner-logos-carousel .wrap {
+  max-width: none;
+  width: 100%;
+  padding-inline: clamp(28px, 4vw, 72px);
+}
+
+body .partner-logos-carousel .partner-head {
+  max-width: min(780px, 100%);
+  margin-bottom: clamp(38px, 5vw, 76px);
+}
+
+/* Ya no usamos grilla en esta sección: ahora es carrusel */
+body .partner-logos-carousel .partner-logo-grid {
+  display: none !important;
+}
+
+body .partner-logos-carousel .partner-carousel-shell {
+  --carousel-gap: clamp(28px, 3vw, 48px);
+  --badge-pair-gap: 22px;
+  --carousel-speed: 30s;
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-block: 8px 16px;
+  pointer-events: auto;
+
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 3.5%,
+    #000 96.5%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 3.5%,
+    #000 96.5%,
+    transparent 100%
+  );
+}
+
+body .partner-logos-carousel .partner-carousel-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+body .partner-logos-carousel .partner-carousel-track {
+  display: flex !important;
+  width: max-content !important;
+  will-change: transform;
+  animation: partner-logo-marquee var(--carousel-speed) linear infinite;
+}
+
+body .partner-logos-carousel .partner-carousel-set {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--carousel-gap) !important;
+  column-gap: var(--carousel-gap) !important;
+  flex: 0 0 auto !important;
+  padding-right: var(--carousel-gap) !important;
+}
+
+/*
+  Importante:
+  - el hover real queda en el carrusel/shell;
+  - cada logo no recibe hover propio, así no se activa ningún transform heredado;
+  - esto evita el efecto de “se achica el margen” al tocar una imagen.
+*/
+body .partner-logos-carousel .partner-logo,
+body .partner-logos-carousel .partner-logo:hover,
+body .partner-logos-carousel .partner-logo:focus,
+body .partner-logos-carousel .partner-logo:focus-visible,
+body .partner-logos-carousel .rel-logo,
+body .partner-logos-carousel .rel-logo:hover,
+body .partner-logos-carousel .rel-logo:focus,
+body .partner-logos-carousel .rel-logo:focus-visible {
+  position: relative !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  overflow: visible !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: none !important;
+}
+
+body .partner-logos-carousel .partner-logo img,
+body .partner-logos-carousel .partner-logo:hover img,
+body .partner-logos-carousel .partner-logo:focus img,
+body .partner-logos-carousel .rel-logo img,
+body .partner-logos-carousel .rel-logo:hover img,
+body .partner-logos-carousel .rel-logo:focus img {
+  display: block !important;
+  width: auto;
+  height: auto;
+  object-fit: contain !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: none !important;
+}
+
+/* No pausamos al hover y no modificamos espaciados */
+body .partner-logos-carousel .partner-carousel-shell:hover .partner-carousel-track,
+body .partner-logos-carousel .partner-carousel-shell:focus-within .partner-carousel-track {
+  animation-play-state: running !important;
+}
+
+/* Logos horizontales: caja chica, sin margen invisible */
+body .partner-logos-carousel .partner-logo--plain {
+  width: auto !important;
+  height: 88px !important;
+}
+
+body .partner-logos-carousel .partner-logo--acindar img {
+  width: 220px !important;
+  max-width: 220px !important;
+  max-height: 58px !important;
+}
+
+body .partner-logos-carousel .partner-logo--argenpymes img {
+  width: 230px !important;
+  max-width: 230px !important;
+  max-height: 62px !important;
+}
+
+body .partner-logos-carousel .partner-logo--trend img {
+  width: 232px !important;
+  max-width: 232px !important;
+  max-height: 72px !important;
+}
+
+/* Logos cuadrados */
+body .partner-logos-carousel .partner-logo--badge {
+  width: 124px !important;
+  height: 124px !important;
+}
+
+body .partner-logos-carousel .partner-logo--badge img {
+  width: 124px !important;
+  height: 124px !important;
+  max-width: 124px !important;
+  max-height: 124px !important;
+  object-fit: contain !important;
+  border-radius: 14px !important;
+}
+
+/* Separación extra SOLO entre Balanz y AdCap */
+body .partner-logos-carousel .partner-logo--balanz {
+  margin-right: var(--badge-pair-gap) !important;
+}
+
+body .partner-logos-carousel .partner-logo .rel-fb {
+  display: none !important;
+}
+
+@keyframes partner-logo-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Tablet */
+@media (max-width: 980px) {
+  body .partner-logos-carousel .partner-carousel-shell {
+    --carousel-gap: clamp(26px, 4.6vw, 42px);
+    --badge-pair-gap: 18px;
+    --carousel-speed: 28s;
+    padding-block: 6px 14px;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+  }
+
+  body .partner-logos-carousel .partner-logo--plain {
+    height: 76px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--acindar img {
+    width: 188px !important;
+    max-width: 188px !important;
+    max-height: 50px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--argenpymes img {
+    width: 196px !important;
+    max-width: 196px !important;
+    max-height: 54px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--trend img {
+    width: 198px !important;
+    max-width: 198px !important;
+    max-height: 62px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--badge {
+    width: 102px !important;
+    height: 102px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--badge img {
+    width: 102px !important;
+    height: 102px !important;
+    max-width: 102px !important;
+    max-height: 102px !important;
+    border-radius: 13px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  body .partner-logos-carousel {
+    padding-top: clamp(58px, 12vw, 82px);
+    padding-bottom: clamp(58px, 12vw, 82px);
+  }
+
+  body .partner-logos-carousel .wrap {
+    padding-inline: 0;
+  }
+
+  body .partner-logos-carousel .partner-head {
+    padding-inline: 24px;
+    margin-bottom: 34px;
+  }
+
+  body .partner-logos-carousel .partner-carousel-shell {
+    --carousel-gap: 28px;
+    --badge-pair-gap: 14px;
+    --carousel-speed: 24s;
+    padding-block: 2px 10px;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+  }
+
+  body .partner-logos-carousel .partner-logo--plain {
+    height: 66px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--acindar img {
+    width: 166px !important;
+    max-width: 166px !important;
+    max-height: 44px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--argenpymes img {
+    width: 174px !important;
+    max-width: 174px !important;
+    max-height: 48px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--trend img {
+    width: 176px !important;
+    max-width: 176px !important;
+    max-height: 56px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--badge {
+    width: 88px !important;
+    height: 88px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--badge img {
+    width: 88px !important;
+    height: 88px !important;
+    max-width: 88px !important;
+    max-height: 88px !important;
+    border-radius: 12px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body .partner-logos-carousel .partner-carousel-shell {
+    --carousel-gap: 24px;
+    --badge-pair-gap: 12px;
+    --carousel-speed: 22s;
+  }
+
+  body .partner-logos-carousel .partner-logo--plain {
+    height: 60px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--acindar img {
+    width: 152px !important;
+    max-width: 152px !important;
+    max-height: 40px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--argenpymes img {
+    width: 160px !important;
+    max-width: 160px !important;
+    max-height: 44px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--trend img {
+    width: 162px !important;
+    max-width: 162px !important;
+    max-height: 52px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--badge {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  body .partner-logos-carousel .partner-logo--badge img {
+    width: 80px !important;
+    height: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .partner-logos-carousel .partner-carousel-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  body .partner-logos-carousel .partner-carousel-viewport {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  body .partner-logos-carousel .partner-carousel-viewport::-webkit-scrollbar {
+    display: none;
+  }
+}

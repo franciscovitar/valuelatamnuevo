@@ -1,0 +1,198 @@
+/* ---------- LIQUIDITY LOGOS FINAL RESPONSIVE FIX ---------- */
+/* Operamos con: Balanz + AdCap. Mantiene la composición horizontal en desktop y mobile. */
+
+body .finan .rel-strip {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+  gap: 14px !important;
+  column-gap: 14px !important;
+  row-gap: 0 !important;
+  width: 100% !important;
+  max-width: 560px !important;
+  margin-top: 24px !important;
+  overflow: visible !important;
+}
+
+body .finan .rel-strip .rel-label,
+body .finan .rel-strip .rel-more {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+
+body .finan .rel-strip .rel-label {
+  font-size: 10px !important;
+  line-height: 1 !important;
+  letter-spacing: .22em !important;
+}
+
+body .finan .rel-strip .rel-more {
+  margin-left: 2px !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+}
+
+body .finan .rel-strip .liquidity-logo,
+body .finan .rel-strip .liquidity-logo:hover,
+body .finan .rel-strip .liquidity-logo:focus,
+body .finan .rel-strip .liquidity-logo:focus-visible {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 112px !important;
+  height: 112px !important;
+  min-width: 112px !important;
+  min-height: 112px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  overflow: hidden !important;
+}
+
+body .finan .rel-strip .liquidity-logo img,
+body .finan .rel-strip .liquidity-logo:hover img,
+body .finan .rel-strip .liquidity-logo:focus img {
+  display: block !important;
+  width: 112px !important;
+  height: 112px !important;
+  max-width: 112px !important;
+  max-height: 112px !important;
+  object-fit: contain !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+body .finan .rel-strip .liquidity-logo--balanz {
+  margin-right: 2px !important;
+}
+
+body .finan .rel-strip .rel-fb {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  body .finan .rel-strip {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    column-gap: 10px !important;
+    max-width: 100% !important;
+    margin-top: 22px !important;
+    overflow: visible !important;
+  }
+
+  body .finan .rel-strip .rel-label {
+    font-size: 8.5px !important;
+    letter-spacing: .18em !important;
+  }
+
+  body .finan .rel-strip .rel-more {
+    font-size: 11px !important;
+    margin-left: 0 !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo,
+  body .finan .rel-strip .liquidity-logo:hover,
+  body .finan .rel-strip .liquidity-logo:focus,
+  body .finan .rel-strip .liquidity-logo:focus-visible {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    min-height: 62px !important;
+    border-radius: 10px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo img,
+  body .finan .rel-strip .liquidity-logo:hover img,
+  body .finan .rel-strip .liquidity-logo:focus img {
+    width: 62px !important;
+    height: 62px !important;
+    max-width: 62px !important;
+    max-height: 62px !important;
+    border-radius: 10px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo--balanz {
+    margin-right: 2px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body .finan .rel-strip {
+    gap: 8px !important;
+    column-gap: 8px !important;
+  }
+
+  body .finan .rel-strip .rel-label {
+    font-size: 7.8px !important;
+    letter-spacing: .15em !important;
+  }
+
+  body .finan .rel-strip .rel-more {
+    font-size: 10px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo,
+  body .finan .rel-strip .liquidity-logo:hover,
+  body .finan .rel-strip .liquidity-logo:focus,
+  body .finan .rel-strip .liquidity-logo:focus-visible {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    border-radius: 9px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo img,
+  body .finan .rel-strip .liquidity-logo:hover img,
+  body .finan .rel-strip .liquidity-logo:focus img {
+    width: 56px !important;
+    height: 56px !important;
+    max-width: 56px !important;
+    max-height: 56px !important;
+    border-radius: 9px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  body .finan .rel-strip {
+    gap: 7px !important;
+    column-gap: 7px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo,
+  body .finan .rel-strip .liquidity-logo:hover,
+  body .finan .rel-strip .liquidity-logo:focus,
+  body .finan .rel-strip .liquidity-logo:focus-visible {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo img,
+  body .finan .rel-strip .liquidity-logo:hover img,
+  body .finan .rel-strip .liquidity-logo:focus img {
+    width: 52px !important;
+    height: 52px !important;
+    max-width: 52px !important;
+    max-height: 52px !important;
+  }
+}
