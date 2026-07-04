@@ -1,59 +1,68 @@
-/* ---------- LIQUIDITY LOGOS FINAL RESPONSIVE FIX ---------- */
-/* Operamos con: Balanz + AdCap. Mantiene la composición horizontal en desktop y mobile. */
+/* ---------- LIQUIDITY LOGOS FINAL RESPONSIVE FIX V2 ---------- */
+/* Ajuste puntual para la fila "Operamos con" en Unidad 02. */
+/* Objetivo: PC igual pero un poco más chico; mobile en fila, no en columna. */
 
-body .finan .rel-strip {
+body .finan .rel-strip,
+body .finan .rel-strip.reveal {
   display: flex !important;
   flex-direction: row !important;
+  flex-wrap: nowrap !important;
   align-items: center !important;
   justify-content: flex-start !important;
-  flex-wrap: nowrap !important;
-  gap: 14px !important;
-  column-gap: 14px !important;
-  row-gap: 0 !important;
-  width: 100% !important;
-  max-width: 560px !important;
-  margin-top: 24px !important;
+  gap: 16px !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-top: clamp(26px, 3.2vw, 42px) !important;
+  padding: 0 !important;
   overflow: visible !important;
 }
 
-body .finan .rel-strip .rel-label,
-body .finan .rel-strip .rel-more {
+body .finan .rel-strip > * {
   flex: 0 0 auto !important;
-  display: inline-flex !important;
-  align-items: center !important;
+  min-width: 0 !important;
+}
+
+body .finan .rel-label,
+body .finan .rel-more {
   white-space: nowrap !important;
-  margin: 0 !important;
-}
-
-body .finan .rel-strip .rel-label {
-  font-size: 10px !important;
   line-height: 1 !important;
-  letter-spacing: .22em !important;
+  transform: none !important;
 }
 
-body .finan .rel-strip .rel-more {
+body .finan .rel-label {
+  color: rgba(216, 232, 244, .62) !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+}
+
+body .finan .rel-more {
   margin-left: 2px !important;
+  color: rgba(246, 243, 236, .54) !important;
   font-size: 13px !important;
-  line-height: 1 !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
 }
 
 body .finan .rel-strip .liquidity-logo,
 body .finan .rel-strip .liquidity-logo:hover,
 body .finan .rel-strip .liquidity-logo:focus,
 body .finan .rel-strip .liquidity-logo:focus-visible {
-  flex: 0 0 auto !important;
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 112px !important;
-  height: 112px !important;
-  min-width: 112px !important;
-  min-height: 112px !important;
+  width: 106px !important;
+  height: 106px !important;
+  min-width: 106px !important;
+  max-width: 106px !important;
+  min-height: 106px !important;
+  max-height: 106px !important;
   padding: 0 !important;
   margin: 0 !important;
   background: transparent !important;
   border: 0 !important;
-  border-radius: 14px !important;
   box-shadow: none !important;
   filter: none !important;
   transform: none !important;
@@ -65,134 +74,133 @@ body .finan .rel-strip .liquidity-logo img,
 body .finan .rel-strip .liquidity-logo:hover img,
 body .finan .rel-strip .liquidity-logo:focus img {
   display: block !important;
-  width: 112px !important;
-  height: 112px !important;
-  max-width: 112px !important;
-  max-height: 112px !important;
+  width: 106px !important;
+  height: 106px !important;
+  max-width: 106px !important;
+  max-height: 106px !important;
   object-fit: contain !important;
-  border-radius: 14px !important;
+  border-radius: 12px !important;
   box-shadow: none !important;
   filter: none !important;
   transform: none !important;
   transition: none !important;
 }
 
-body .finan .rel-strip .liquidity-logo--balanz {
-  margin-right: 2px !important;
-}
-
-body .finan .rel-strip .rel-fb {
+body .finan .rel-strip .liquidity-logo .rel-fb {
   display: none !important;
 }
 
-@media (max-width: 760px) {
-  body .finan .rel-strip {
-    flex-direction: row !important;
-    align-items: center !important;
+@media (max-width: 900px) {
+  body .finan .rel-strip,
+  body .finan .rel-strip.reveal {
     justify-content: flex-start !important;
-    flex-wrap: nowrap !important;
-    gap: 10px !important;
-    column-gap: 10px !important;
+    gap: 13px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo,
+  body .finan .rel-strip .liquidity-logo:hover,
+  body .finan .rel-strip .liquidity-logo:focus,
+  body .finan .rel-strip .liquidity-logo:focus-visible {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    max-width: 88px !important;
+    min-height: 88px !important;
+    max-height: 88px !important;
+  }
+
+  body .finan .rel-strip .liquidity-logo img,
+  body .finan .rel-strip .liquidity-logo:hover img,
+  body .finan .rel-strip .liquidity-logo:focus img {
+    width: 88px !important;
+    height: 88px !important;
+    max-width: 88px !important;
+    max-height: 88px !important;
+    border-radius: 11px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body .finan .rel-strip,
+  body .finan .rel-strip.reveal {
+    width: 100% !important;
     max-width: 100% !important;
-    margin-top: 22px !important;
-    overflow: visible !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-top: 24px !important;
+    padding-inline: 0 !important;
   }
 
-  body .finan .rel-strip .rel-label {
+  body .finan .rel-label {
     font-size: 8.5px !important;
-    letter-spacing: .18em !important;
+    letter-spacing: .14em !important;
   }
 
-  body .finan .rel-strip .rel-more {
-    font-size: 11px !important;
+  body .finan .rel-more {
     margin-left: 0 !important;
+    font-size: 8.5px !important;
+    line-height: 1 !important;
   }
 
   body .finan .rel-strip .liquidity-logo,
   body .finan .rel-strip .liquidity-logo:hover,
   body .finan .rel-strip .liquidity-logo:focus,
   body .finan .rel-strip .liquidity-logo:focus-visible {
-    width: 62px !important;
-    height: 62px !important;
-    min-width: 62px !important;
-    min-height: 62px !important;
-    border-radius: 10px !important;
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    max-width: 64px !important;
+    min-height: 64px !important;
+    max-height: 64px !important;
+    border-radius: 9px !important;
   }
 
   body .finan .rel-strip .liquidity-logo img,
   body .finan .rel-strip .liquidity-logo:hover img,
   body .finan .rel-strip .liquidity-logo:focus img {
-    width: 62px !important;
-    height: 62px !important;
-    max-width: 62px !important;
-    max-height: 62px !important;
-    border-radius: 10px !important;
-  }
-
-  body .finan .rel-strip .liquidity-logo--balanz {
-    margin-right: 2px !important;
+    width: 64px !important;
+    height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
+    border-radius: 9px !important;
   }
 }
 
-@media (max-width: 420px) {
-  body .finan .rel-strip {
+@media (max-width: 390px) {
+  body .finan .rel-strip,
+  body .finan .rel-strip.reveal {
     gap: 8px !important;
-    column-gap: 8px !important;
   }
 
-  body .finan .rel-strip .rel-label {
+  body .finan .rel-label {
     font-size: 7.8px !important;
-    letter-spacing: .15em !important;
+    letter-spacing: .12em !important;
   }
 
-  body .finan .rel-strip .rel-more {
-    font-size: 10px !important;
-  }
-
-  body .finan .rel-strip .liquidity-logo,
-  body .finan .rel-strip .liquidity-logo:hover,
-  body .finan .rel-strip .liquidity-logo:focus,
-  body .finan .rel-strip .liquidity-logo:focus-visible {
-    width: 56px !important;
-    height: 56px !important;
-    min-width: 56px !important;
-    min-height: 56px !important;
-    border-radius: 9px !important;
-  }
-
-  body .finan .rel-strip .liquidity-logo img,
-  body .finan .rel-strip .liquidity-logo:hover img,
-  body .finan .rel-strip .liquidity-logo:focus img {
-    width: 56px !important;
-    height: 56px !important;
-    max-width: 56px !important;
-    max-height: 56px !important;
-    border-radius: 9px !important;
-  }
-}
-
-@media (max-width: 360px) {
-  body .finan .rel-strip {
-    gap: 7px !important;
-    column-gap: 7px !important;
+  body .finan .rel-more {
+    font-size: 7.8px !important;
   }
 
   body .finan .rel-strip .liquidity-logo,
   body .finan .rel-strip .liquidity-logo:hover,
   body .finan .rel-strip .liquidity-logo:focus,
   body .finan .rel-strip .liquidity-logo:focus-visible {
-    width: 52px !important;
-    height: 52px !important;
-    min-width: 52px !important;
-    min-height: 52px !important;
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+    min-height: 58px !important;
+    max-height: 58px !important;
   }
 
   body .finan .rel-strip .liquidity-logo img,
   body .finan .rel-strip .liquidity-logo:hover img,
   body .finan .rel-strip .liquidity-logo:focus img {
-    width: 52px !important;
-    height: 52px !important;
-    max-width: 52px !important;
-    max-height: 52px !important;
+    width: 58px !important;
+    height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    border-radius: 8px !important;
   }
 }
