@@ -94,7 +94,8 @@ export function initCoverAnimation() {
   const nodeById = (id) => nodes.find((node) => node.id === id);
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 1);
+    const isMobile = mobileQuery.matches;
+    dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 2 : 1);
     w = mount.clientWidth || window.innerWidth;
     h = mount.clientHeight || window.innerHeight;
     canvas.width = Math.floor(w * dpr);
@@ -150,10 +151,11 @@ export function initCoverAnimation() {
   function point(node) {
     const isMobile = mobileQuery.matches;
     const coords = isMobile && mobilePositions[node.id] ? mobilePositions[node.id] : [node.x, node.y];
-    const scale = Math.min(w, h) * (isMobile ? 0.72 : 0.62);
+    const scale = Math.min(w, h) * (isMobile ? 0.64 : 0.62);
+    const centerY = h * (isMobile ? 0.46 : 0.5);
     return {
       x: w * 0.5 + ((coords[0] - 0.5) * scale) + parallaxX * (node.id === 'hub' ? 0.2 : 1),
-      y: h * 0.5 + ((coords[1] - 0.5) * scale) + parallaxY * (node.id === 'hub' ? 0.2 : 1),
+      y: centerY + ((coords[1] - 0.5) * scale) + parallaxY * (node.id === 'hub' ? 0.2 : 1),
     };
   }
 
@@ -175,14 +177,16 @@ export function initCoverAnimation() {
   function labelPoint(node, p) {
     const isMobile = mobileQuery.matches;
     ctx.font = labelFont();
-    const bw = ctx.measureText(node.label).width + (isMobile ? 16 : 24);
-    const labelScale = isMobile ? 0.2 : 1;
+    const bw = ctx.measureText(node.label).width + (isMobile ? 14 : 24);
+    const labelScale = isMobile ? 0.74 : 1;
     const defaultY = node.y < 0.5 ? -32 : 34;
     const lx = p.x + (node.labelX || 0) * labelScale;
-    const ly = p.y + (node.labelY || defaultY) * (isMobile ? 0.86 : 1);
+    const ly = p.y + (node.labelY || defaultY) * (isMobile ? 0.78 : 1);
+    const sidePad = isMobile ? 10 : 14;
+    const bottomLimit = isMobile ? h - 132 : h - 104;
     return {
-      x: clamp(lx, bw / 2 + 14, w - bw / 2 - 14),
-      y: clamp(ly, 26, h - 104),
+      x: clamp(lx, bw / 2 + sidePad, w - bw / 2 - sidePad),
+      y: clamp(ly, 30, bottomLimit),
     };
   }
 
@@ -192,8 +196,8 @@ export function initCoverAnimation() {
     ctx.save();
     ctx.font = labelFont();
     const tw = ctx.measureText(text).width;
-    const bw = tw + (mobileQuery.matches ? 16 : 24);
-    const bh = mobileQuery.matches ? 24 : 28;
+    const bw = tw + (mobileQuery.matches ? 14 : 24);
+    const bh = mobileQuery.matches ? 22 : 28;
     ctx.globalAlpha = on;
     ctx.fillStyle = 'rgba(4, 11, 20, .68)';
     roundRect(x - bw / 2, y - bh / 2, bw, bh, 14);
@@ -329,7 +333,7 @@ export function initCoverAnimation() {
     ctx.strokeStyle = 'rgba(246,243,236,.32)';
     ctx.lineWidth = 1;
     for (let i = 0; i < 4; i += 1) {
-      const radius = Math.min(w, h) * (mobileQuery.matches ? 0.14 + i * 0.075 : 0.16 + i * 0.085);
+      const radius = Math.min(w, h) * (mobileQuery.matches ? 0.125 + i * 0.066 : 0.16 + i * 0.085);
       ctx.beginPath();
       ctx.arc(w * 0.5 + parallaxX * 0.15, h * 0.5 + parallaxY * 0.15, radius, 0, Math.PI * 2);
       ctx.stroke();
@@ -338,7 +342,7 @@ export function initCoverAnimation() {
 
     const cx = w / 2 + parallaxX * 0.28;
     const cy = h / 2 + parallaxY * 0.28;
-    const particleScale = Math.min(w, h) * (mobileQuery.matches ? 0.33 : 0.36);
+    const particleScale = Math.min(w, h) * (mobileQuery.matches ? 0.29 : 0.36);
     particles.forEach((particle) => {
       const visible = smooth(particle.show, particle.show + 0.42, progress);
       if (visible <= 0.01) return;
@@ -387,13 +391,13 @@ export function initCoverAnimation() {
       const power = appear(nodePower(node.id));
       const p = point(node);
       const pulse = reduceMotion ? 1 : 1 + Math.sin(t * 3.2 + node.x * 5) * 0.045 * power;
-      const radius = node.r * (mobileQuery.matches ? 0.86 : 1) * pulse;
+      const radius = node.r * (mobileQuery.matches ? 0.78 : 1) * pulse;
 
       ctx.save();
       ctx.globalAlpha = node.id === 'hub' ? 1 : reveal;
       ctx.fillStyle = `rgba(${node.c.join(',')}, ${0.035 + 0.075 * power})`;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, radius * (mobileQuery.matches ? 2.8 : 3.25), 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, radius * (mobileQuery.matches ? 2.55 : 3.25), 0, Math.PI * 2);
       ctx.fill();
       ctx.strokeStyle = `rgba(${node.c.join(',')}, ${0.2 + 0.5 * power})`;
       ctx.lineWidth = 0.9 + 0.85 * power;
