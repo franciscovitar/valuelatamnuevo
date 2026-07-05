@@ -15,6 +15,7 @@ import {
   Regulation,
   Solutions,
   SoundToggle,
+  StructuredData,
   Team,
   ValueLatamRuntime,
   WhyUs,
@@ -24,6 +25,7 @@ import {
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <BackgroundCanvas />
       <Header />
       <main>

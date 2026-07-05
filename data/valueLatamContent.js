@@ -1,8 +1,10 @@
+import { siteConfig } from './siteConfig';
+
 export const contact = {
-  email: 'info@valuelatam.com',
-  whatsappLabel: '+54 9 11 3000-4720',
-  whatsappUrl: 'https://wa.me/5491130004720',
-  address: 'Mariano Castex 499 · Piso 3 · Of. 303 · Canning',
+  email: siteConfig.email,
+  whatsappLabel: siteConfig.whatsappLabel,
+  whatsappUrl: siteConfig.whatsappUrl,
+  address: siteConfig.address,
 };
 
 export const navLinks = [

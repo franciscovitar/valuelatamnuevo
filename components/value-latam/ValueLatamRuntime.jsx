@@ -9,6 +9,8 @@ import { initSoundToggle } from './runtime/soundToggle';
 
 export default function ValueLatamRuntime() {
   useEffect(() => {
+    document.documentElement.classList.add('js');
+
     const cleanups = [
       initRevealCounters(),
       initNavigationCards(),

@@ -35,7 +35,7 @@ header.nav {
   display: grid;
   place-items: center;
   color: var(--brass);
-  font-family: 'Fraunces', serif;
+  font-family: var(--font-fraunces), serif;
   font-weight: 600;
   font-size: 17px;
   border-radius: 1px;

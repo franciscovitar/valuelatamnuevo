@@ -2,6 +2,7 @@ export function initCoverAnimation() {
   const mount = document.getElementById('coverBrain');
   const scroller = document.getElementById('coverScroll');
   const cap = document.getElementById('coverCaption');
+  const introCopy = document.getElementById('coverIntroCopy');
   if (!mount || !scroller || !cap) return () => {};
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -17,6 +18,11 @@ export function initCoverAnimation() {
   const hud = document.createElement('div');
   hud.className = 'vl2-cover-hud';
   mount.appendChild(hud);
+
+  const hubBadge = document.createElement('div');
+  hubBadge.className = 'vl2-cover-hub-badge';
+  hubBadge.textContent = 'VALUE LATAM';
+  mount.appendChild(hubBadge);
 
   const note = document.createElement('div');
   note.className = 'vl2-cover-note';
@@ -74,15 +80,27 @@ export function initCoverAnimation() {
     ops: { x: -60, y: 2 },
   };
 
-  const links = [
-    ['hub', 'fin', 0.08],
-    ['hub', 'liq', 0.31],
-    ['liq', 'socios', 0.39],
-    ['hub', 'pay', 0.54],
-    ['pay', 'tax', 0.5],
-    ['hub', 'ai', 0.78],
-    ['ai', 'ops', 0.74],
-  ];
+  /*
+    Link timings:
+    - Mobile keeps the approved rhythm.
+    - Desktop is strictly ordered and linear with scroll:
+      parent line first, dependent line second.
+  */
+const links = [
+  { from: 'hub', to: 'fin', mobileStart: 0.08, mobileEnd: 0.28, desktopStart: 0.08, desktopEnd: 0.34 },
+  { from: 'hub', to: 'liq', mobileStart: 0.31, mobileEnd: 0.51, desktopStart: 0.32, desktopEnd: 0.53 },
+  { from: 'liq', to: 'socios', mobileStart: 0.39, mobileEnd: 0.59, desktopStart: 0.53, desktopEnd: 0.65 },
+  { from: 'hub', to: 'pay', mobileStart: 0.54, mobileEnd: 0.74, desktopStart: 0.57, desktopEnd: 0.74 },
+  { from: 'pay', to: 'tax', mobileStart: 0.50, mobileEnd: 0.70, desktopStart: 0.74, desktopEnd: 0.84 },
+  { from: 'hub', to: 'ai', mobileStart: 0.78, mobileEnd: 0.98, desktopStart: 0.81, desktopEnd: 0.94 },
+  { from: 'ai', to: 'ops', mobileStart: 0.74, mobileEnd: 0.94, desktopStart: 0.94, desktopEnd: 1.00 },
+];
+
+const desktopNodeShows = {
+  socios: 0.53,
+  tax: 0.74,
+  ops: 0.94,
+};
 
   const particles = Array.from({ length: tabletQuery.matches ? 42 : 78 }, () => ({
     a: Math.random() * Math.PI * 2,
@@ -117,6 +135,9 @@ export function initCoverAnimation() {
   const linear = (a, b, value) => clamp((value - a) / (b - a), 0, 1);
   const appear = (value) => smooth(0, 1, clamp(value, 0, 1));
   const nodeById = (id) => nodes.find((node) => node.id === id);
+  const nodeShowAt = (node) => (
+    mobileQuery.matches ? node.show : (desktopNodeShows[node.id] ?? node.show)
+  );
 
   function resize() {
     const isMobile = mobileQuery.matches;
@@ -196,7 +217,7 @@ export function initCoverAnimation() {
   }
 
   function labelFont() {
-    return mobileQuery.matches ? '700 9px IBM Plex Mono, monospace' : '600 11px IBM Plex Mono, monospace';
+    return mobileQuery.matches ? '700 9px ui-monospace, SFMono-Regular, Menlo, monospace' : '600 11px ui-monospace, SFMono-Regular, Menlo, monospace';
   }
 
   function labelPoint(node, p) {
@@ -359,21 +380,27 @@ export function initCoverAnimation() {
     rafId = requestAnimationFrame(draw);
     if (!active && Math.abs(progress - targetProgress) < 0.002) return;
 
-    const minFrame = tabletQuery.matches ? 28 : 20;
-    if (timestamp - lastFrame < minFrame) return;
+    const frameDelta = lastFrame ? clamp((timestamp - lastFrame) / 16.67, 0.5, 2) : 1;
     lastFrame = timestamp;
 
-    t += reduceMotion ? 0 : (tabletQuery.matches ? 0.008 : 0.012);
+    t += reduceMotion ? 0 : (tabletQuery.matches ? 0.008 : 0.012) * frameDelta;
 
-    if (mobileQuery.matches) {
-      progress = targetProgress;
-    } else {
-      progress += (targetProgress - progress) * (reduceMotion ? 1 : 0.13);
-    }
+    /*
+      Scroll must be the source of truth. Progress smoothing was the cause of
+      the small visual drag/lag between the scroll and the line drawing.
+    */
+    progress = targetProgress;
 
-    parallaxX += (targetParallaxX - parallaxX) * 0.08;
-    parallaxY += (targetParallaxY - parallaxY) * 0.08;
+    parallaxX += (targetParallaxX - parallaxX) * 0.12;
+    parallaxY += (targetParallaxY - parallaxY) * 0.12;
     updateCaption();
+
+    if (introCopy) {
+      const introOn = 1 - smooth(0.025, 0.15, progress);
+      introCopy.style.opacity = String(introOn);
+      introCopy.style.transform = `translate(-50%, ${10 * (1 - introOn)}px)`;
+      introCopy.style.pointerEvents = introOn > 0.2 ? 'auto' : 'none';
+    }
 
     ctx.clearRect(0, 0, w, h);
 
@@ -416,15 +443,19 @@ export function initCoverAnimation() {
 
     const hub = nodeById('hub');
     const hubPoint = point(hub);
+    if (hubBadge) {
+      hubBadge.style.left = `${hubPoint.x}px`;
+      hubBadge.style.top = `${hubPoint.y}px`;
+    }
     drawSpot(hubPoint, hub.c, mobileQuery.matches ? 0.115 : 0.14, 0.78);
 
     const linkProgress = {};
-    const lineScrollProgress = mobileQuery.matches ? progress : targetProgress;
+    const lineScrollProgress = progress;
 
-    links.forEach(([from, to, start]) => {
-      linkProgress[`${from}>${to}`] = mobileQuery.matches
-        ? linear(start, start + 0.2, lineScrollProgress)
-        : linear(start, start + 0.16, lineScrollProgress);
+    links.forEach((link) => {
+      const start = mobileQuery.matches ? link.mobileStart : link.desktopStart;
+      const end = mobileQuery.matches ? link.mobileEnd : link.desktopEnd;
+      linkProgress[`${link.from}>${link.to}`] = linear(start, end, lineScrollProgress);
     });
 
     stages.forEach((stage, index) => {
@@ -432,11 +463,14 @@ export function initCoverAnimation() {
       if (weight <= 0.02) return;
       stage.ids.forEach((id) => {
         const item = nodeById(id);
-        if (item) drawSpot(point(item), item.c, mobileQuery.matches ? 0.078 : 0.11, weight * 0.72);
+        if (!item) return;
+        const reveal = smooth(nodeShowAt(item), nodeShowAt(item) + 0.16, progress);
+        if (reveal <= 0.01) return;
+        drawSpot(point(item), item.c, mobileQuery.matches ? 0.078 : 0.11, weight * 0.72 * reveal);
       });
     });
 
-    links.forEach(([from, to]) => {
+    links.forEach(({ from, to }) => {
       const fromNode = nodeById(from);
       const toNode = nodeById(to);
       const amount = linkProgress[`${from}>${to}`];
@@ -447,7 +481,8 @@ export function initCoverAnimation() {
 
     const finalMap = progress > 0.92;
     nodes.forEach((node) => {
-      const reveal = smooth(node.show, node.show + 0.2, progress);
+      const showAt = nodeShowAt(node);
+      const reveal = smooth(showAt, showAt + 0.16, progress);
       if (reveal <= 0.01 && node.id !== 'hub') return;
 
       const power = appear(nodePower(node.id));

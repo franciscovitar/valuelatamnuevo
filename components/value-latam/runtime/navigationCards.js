@@ -154,13 +154,17 @@ export function initNavigationCards() {
     });
   }
 
-  document.querySelectorAll('.trust .logos img, .reg .seal img, .rel-logo img').forEach((image) => {
+  document.querySelectorAll('.trust .logos img, .partner-logo img, .reg .seal img, .liquidity-operators__logo img').forEach((image) => {
     const applyFallback = () => {
       const parent = image.parentNode;
       if (!parent || parent.querySelector('.logo-fallback')) return;
 
-      const name = image.getAttribute('alt') || '';
-      parent.innerHTML = '<span class="logo-fallback">' + name + '</span>';
+      const name = image.getAttribute('alt') || image.closest('[aria-label]')?.getAttribute('aria-label') || '';
+      const fallback = document.createElement('span');
+      fallback.className = 'logo-fallback';
+      fallback.textContent = name;
+      image.remove();
+      parent.appendChild(fallback);
     };
 
     if (image.complete && image.naturalWidth === 0) {
