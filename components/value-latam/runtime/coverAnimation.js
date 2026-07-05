@@ -60,18 +60,18 @@ export function initCoverAnimation() {
     socios: [0.805, 0.665],
     pay: [0.5, 0.78],
     tax: [0.195, 0.665],
-    ai: [0.185, 0.39],
-    ops: [0.215, 0.555],
+    ai: [0.195, 0.39],
+    ops: [0.285, 0.555],
   };
 
   const mobileLabelOffsets = {
     fin: { x: 0, y: -36 },
-    liq: { x: 108, y: -4 },
+    liq: { x: 108, y: -28 },
     socios: { x: 108, y: 30 },
     pay: { x: 0, y: 42 },
     tax: { x: -108, y: 30 },
-    ai: { x: -74, y: -30 },
-    ops: { x: -72, y: 2 },
+    ai: { x: -120, y: -25 },
+    ops: { x: -60, y: 2 },
   };
 
   const links = [
@@ -80,7 +80,7 @@ export function initCoverAnimation() {
     ['liq', 'socios', 0.39],
     ['hub', 'pay', 0.54],
     ['pay', 'tax', 0.5],
-    ['hub', 'ai', 0.68],
+    ['hub', 'ai', 0.78],
     ['ai', 'ops', 0.74],
   ];
 
@@ -273,7 +273,7 @@ export function initCoverAnimation() {
 
   function drawCurve(a, b, amount, color, strength) {
     const isMobile = mobileQuery.matches;
-    const drawAmount = isMobile ? clamp(amount, 0, 1) : appear(amount);
+    const drawAmount = clamp(amount, 0, 1);
     if (drawAmount <= 0.01) return;
 
     const power = isMobile ? clamp(strength, 0, 1) : appear(strength);
@@ -295,12 +295,19 @@ export function initCoverAnimation() {
     ctx.lineWidth = isMobile ? 0.9 + 0.45 * power : 1 + 0.65 * power;
     const head = drawPartialCurve(sx, sy, mx, my, ex, ey, drawAmount);
 
-    if (!isMobile && head && power > 0.04) {
+    if (head && power > 0.04) {
       ctx.globalCompositeOperation = 'screen';
-      ctx.fillStyle = `rgba(${color.join(',')}, ${0.26 + 0.35 * power})`;
+      ctx.fillStyle = `rgba(${color.join(',')}, ${isMobile ? 0.3 + 0.42 * power : 0.26 + 0.35 * power})`;
       ctx.beginPath();
-      ctx.arc(head.x, head.y, 1.8 + power, 0, Math.PI * 2);
+      ctx.arc(head.x, head.y, isMobile ? 1.6 + 0.9 * power : 1.8 + power, 0, Math.PI * 2);
       ctx.fill();
+
+      if (isMobile) {
+        ctx.fillStyle = `rgba(${color.join(',')}, ${0.08 + 0.16 * power})`;
+        ctx.beginPath();
+        ctx.arc(head.x, head.y, 3.2 + 1.2 * power, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
     ctx.restore();
   }
@@ -412,10 +419,12 @@ export function initCoverAnimation() {
     drawSpot(hubPoint, hub.c, mobileQuery.matches ? 0.115 : 0.14, 0.78);
 
     const linkProgress = {};
+    const lineScrollProgress = mobileQuery.matches ? progress : targetProgress;
+
     links.forEach(([from, to, start]) => {
       linkProgress[`${from}>${to}`] = mobileQuery.matches
-        ? linear(start, start + 0.2, progress)
-        : smooth(start, start + 0.16, progress);
+        ? linear(start, start + 0.2, lineScrollProgress)
+        : linear(start, start + 0.16, lineScrollProgress);
     });
 
     stages.forEach((stage, index) => {
