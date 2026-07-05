@@ -31,14 +31,12 @@ export default function Liquidity() {
         <div className="liquidity-operators reveal" aria-label="Operamos con Balanz y AdCap, entre otras">
           <span className="liquidity-operators__label">Operamos con</span>
 
-          <span className="liquidity-operators__logos">
-            <span className="liquidity-operators__logo liquidity-operators__logo--balanz">
-              <img src="/logos/balanz-clean.png" alt="Balanz" loading="lazy" decoding="async" />
-            </span>
+          <span className="liquidity-operators__logo liquidity-operators__logo--balanz" aria-label="Balanz">
+            <img src="/logos/balanz-clean.png" alt="" loading="lazy" decoding="async" aria-hidden="true" />
+          </span>
 
-            <span className="liquidity-operators__logo liquidity-operators__logo--adcap">
-              <img src="/logos/adcap-clean.png" alt="AdCap" loading="lazy" decoding="async" />
-            </span>
+          <span className="liquidity-operators__logo liquidity-operators__logo--adcap" aria-label="AdCap">
+            <img src="/logos/adcap-clean.png" alt="" loading="lazy" decoding="async" aria-hidden="true" />
           </span>
 
           <span className="liquidity-operators__more">entre otras</span>

@@ -1,21 +1,22 @@
-/* ---------- LIQUIDITY LOGOS FINAL RESPONSIVE FIX V6 ---------- */
+/* ---------- LIQUIDITY LOGOS FINAL RESPONSIVE FIX V8 ---------- */
 /*
-  Reemplaza la vieja fila .rel-strip de Unidad 02 por un bloque propio:
-  .liquidity-operators
-
-  Motivo:
-  Había demasiados estilos globales pegándole a .rel-strip / .rel-logo.
-  En mobile esos estilos se pisaban y terminaban apilando Balanz/AdCap.
-  Este bloque usa clases nuevas para que no lo rompa ningún selector viejo.
+  Fila "Operamos con" en Unidad 02.
+  - Desktop/tablet: usa las imágenes reales.
+  - Mobile: todo queda en una misma fila, pero alineado a la izquierda.
+  - En mobile se usan badges compactos por CSS para evitar cortes/superposiciones.
 */
 
 body .finan .liquidity-operators,
 body .finan .liquidity-operators.reveal {
+  --liq-logo-size: 96px;
+  --liq-gap: 14px;
+
   display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   align-items: center !important;
   justify-content: flex-start !important;
-  flex-wrap: nowrap !important;
-  gap: 14px !important;
+  gap: var(--liq-gap) !important;
   width: fit-content !important;
   max-width: 100% !important;
   margin-top: clamp(24px, 3vw, 40px) !important;
@@ -35,7 +36,6 @@ body .finan .liquidity-operators__more {
   display: inline-flex !important;
   align-items: center !important;
   flex: 0 0 auto !important;
-  min-width: 0 !important;
   white-space: nowrap !important;
   line-height: 1 !important;
   transform: none !important;
@@ -57,30 +57,21 @@ body .finan .liquidity-operators__more {
   font-weight: 700 !important;
 }
 
-body .finan .liquidity-operators__logos {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex: 0 0 auto !important;
-  gap: 10px !important;
-  min-width: 0 !important;
-  white-space: nowrap !important;
-}
-
 body .finan .liquidity-operators__logo,
 body .finan .liquidity-operators__logo:hover,
 body .finan .liquidity-operators__logo:focus,
 body .finan .liquidity-operators__logo:focus-visible {
+  position: relative !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex: 0 0 auto !important;
-  width: 100px !important;
-  height: 100px !important;
-  min-width: 100px !important;
-  max-width: 100px !important;
-  min-height: 100px !important;
-  max-height: 100px !important;
+  flex: 0 0 var(--liq-logo-size) !important;
+  width: var(--liq-logo-size) !important;
+  height: var(--liq-logo-size) !important;
+  min-width: var(--liq-logo-size) !important;
+  max-width: var(--liq-logo-size) !important;
+  min-height: var(--liq-logo-size) !important;
+  max-height: var(--liq-logo-size) !important;
   padding: 0 !important;
   margin: 0 !important;
   background: transparent !important;
@@ -97,10 +88,10 @@ body .finan .liquidity-operators__logo img,
 body .finan .liquidity-operators__logo:hover img,
 body .finan .liquidity-operators__logo:focus img {
   display: block !important;
-  width: 100px !important;
-  height: 100px !important;
-  max-width: 100px !important;
-  max-height: 100px !important;
+  width: var(--liq-logo-size) !important;
+  height: var(--liq-logo-size) !important;
+  max-width: var(--liq-logo-size) !important;
+  max-height: var(--liq-logo-size) !important;
   object-fit: contain !important;
   border-radius: 12px !important;
   box-shadow: none !important;
@@ -109,54 +100,39 @@ body .finan .liquidity-operators__logo:focus img {
   transition: none !important;
 }
 
+/* Tablet */
 @media (max-width: 900px) {
   body .finan .liquidity-operators,
   body .finan .liquidity-operators.reveal {
-    gap: 12px !important;
-  }
-
-  body .finan .liquidity-operators__logos {
-    gap: 8px !important;
-  }
-
-  body .finan .liquidity-operators__logo,
-  body .finan .liquidity-operators__logo:hover,
-  body .finan .liquidity-operators__logo:focus,
-  body .finan .liquidity-operators__logo:focus-visible,
-  body .finan .liquidity-operators__logo img,
-  body .finan .liquidity-operators__logo:hover img,
-  body .finan .liquidity-operators__logo:focus img {
-    width: 84px !important;
-    height: 84px !important;
-    min-width: 84px !important;
-    max-width: 84px !important;
-    min-height: 84px !important;
-    max-height: 84px !important;
-    border-radius: 11px !important;
+    --liq-logo-size: 82px;
+    --liq-gap: 12px;
   }
 }
 
-/* MOBILE: una sola línea real, sin apilar y sin que desaparezca "Operamos con" */
+/* Mobile: una fila compacta alineada a la izquierda */
 @media (max-width: 640px) {
   body .finan .liquidity-operators,
   body .finan .liquidity-operators.reveal {
+    --liq-logo-size: clamp(42px, 12.5vw, 50px);
+    --liq-gap: clamp(4px, 1.35vw, 7px);
+
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     width: 100% !important;
     max-width: 100% !important;
-    gap: clamp(4px, 1.45vw, 7px) !important;
+    gap: var(--liq-gap) !important;
     margin-top: 22px !important;
-    margin-inline: auto !important;
+    margin-inline: 0 !important;
     padding-inline: 0 !important;
     overflow: visible !important;
   }
 
   body .finan .liquidity-operators__label {
     font-size: clamp(5.8px, 1.65vw, 7px) !important;
-    letter-spacing: .055em !important;
+    letter-spacing: .045em !important;
     opacity: .82 !important;
   }
 
@@ -165,66 +141,73 @@ body .finan .liquidity-operators__logo:focus img {
     opacity: .82 !important;
   }
 
-  body .finan .liquidity-operators__logos {
-    gap: clamp(4px, 1.2vw, 6px) !important;
-  }
-
   body .finan .liquidity-operators__logo,
   body .finan .liquidity-operators__logo:hover,
   body .finan .liquidity-operators__logo:focus,
   body .finan .liquidity-operators__logo:focus-visible {
-    width: clamp(38px, 12vw, 48px) !important;
-    height: clamp(38px, 12vw, 48px) !important;
-    min-width: clamp(38px, 12vw, 48px) !important;
-    max-width: clamp(38px, 12vw, 48px) !important;
-    min-height: clamp(38px, 12vw, 48px) !important;
-    max-height: clamp(38px, 12vw, 48px) !important;
     border-radius: 8px !important;
   }
 
-  body .finan .liquidity-operators__logo img,
-  body .finan .liquidity-operators__logo:hover img,
-  body .finan .liquidity-operators__logo:focus img {
-    width: clamp(38px, 12vw, 48px) !important;
-    height: clamp(38px, 12vw, 48px) !important;
-    max-width: clamp(38px, 12vw, 48px) !important;
-    max-height: clamp(38px, 12vw, 48px) !important;
-    border-radius: 8px !important;
+  /* En mobile reemplazamos la imagen por un badge CSS para que no se corte ni se superponga. */
+  body .finan .liquidity-operators__logo img {
+    display: none !important;
+  }
+
+  body .finan .liquidity-operators__logo--balanz {
+    background: #252d88 !important;
+  }
+
+  body .finan .liquidity-operators__logo--balanz::before {
+    content: 'BALANZ';
+    color: #fff;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-size: clamp(8px, 2.35vw, 10px);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    line-height: 1;
+  }
+
+  body .finan .liquidity-operators__logo--adcap {
+    flex-direction: column !important;
+    gap: 2px !important;
+    background: #000 !important;
+  }
+
+  body .finan .liquidity-operators__logo--adcap::before {
+    content: 'AdCap';
+    color: #fff;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-size: clamp(8px, 2.35vw, 10px);
+    font-weight: 800;
+    letter-spacing: -.06em;
+    line-height: .9;
+  }
+
+  body .finan .liquidity-operators__logo--adcap::after {
+    content: 'ASSET MANAGEMENT';
+    color: #fff;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(2.6px, .78vw, 3.3px);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1;
+    opacity: .9;
   }
 }
 
 @media (max-width: 370px) {
   body .finan .liquidity-operators,
   body .finan .liquidity-operators.reveal {
-    gap: 4px !important;
+    --liq-logo-size: 39px;
+    --liq-gap: 4px;
   }
 
   body .finan .liquidity-operators__label {
-    font-size: 5.6px !important;
-    letter-spacing: .035em !important;
+    font-size: 5.5px !important;
+    letter-spacing: .025em !important;
   }
 
   body .finan .liquidity-operators__more {
-    font-size: 6.3px !important;
-  }
-
-  body .finan .liquidity-operators__logos {
-    gap: 4px !important;
-  }
-
-  body .finan .liquidity-operators__logo,
-  body .finan .liquidity-operators__logo:hover,
-  body .finan .liquidity-operators__logo:focus,
-  body .finan .liquidity-operators__logo:focus-visible,
-  body .finan .liquidity-operators__logo img,
-  body .finan .liquidity-operators__logo:hover img,
-  body .finan .liquidity-operators__logo:focus img {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    max-width: 38px !important;
-    min-height: 38px !important;
-    max-height: 38px !important;
-    border-radius: 7px !important;
+    font-size: 6.2px !important;
   }
 }
