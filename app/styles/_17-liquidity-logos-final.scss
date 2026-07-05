@@ -1,10 +1,4 @@
-/* ---------- LIQUIDITY LOGOS FINAL RESPONSIVE FIX V8 ---------- */
-/*
-  Fila "Operamos con" en Unidad 02.
-  - Desktop/tablet: usa las imágenes reales.
-  - Mobile: todo queda en una misma fila, pero alineado a la izquierda.
-  - En mobile se usan badges compactos por CSS para evitar cortes/superposiciones.
-*/
+
 
 body .finan .liquidity-operators,
 body .finan .liquidity-operators.reveal {
@@ -57,6 +51,7 @@ body .finan .liquidity-operators__more {
   font-weight: 700 !important;
 }
 
+/* Caja del logo */
 body .finan .liquidity-operators__logo,
 body .finan .liquidity-operators__logo:hover,
 body .finan .liquidity-operators__logo:focus,
@@ -84,6 +79,16 @@ body .finan .liquidity-operators__logo:focus-visible {
   overflow: hidden !important;
 }
 
+/* IMPORTANTÍSIMO: apagar los logos creados por CSS de versiones anteriores */
+body .finan .liquidity-operators__logo--balanz::before,
+body .finan .liquidity-operators__logo--balanz::after,
+body .finan .liquidity-operators__logo--adcap::before,
+body .finan .liquidity-operators__logo--adcap::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Imagen real */
 body .finan .liquidity-operators__logo img,
 body .finan .liquidity-operators__logo:hover img,
 body .finan .liquidity-operators__logo:focus img {
@@ -98,6 +103,7 @@ body .finan .liquidity-operators__logo:focus img {
   filter: none !important;
   transform: none !important;
   transition: none !important;
+  opacity: 1 !important;
 }
 
 /* Tablet */
@@ -109,12 +115,12 @@ body .finan .liquidity-operators__logo:focus img {
   }
 }
 
-/* Mobile: una fila compacta alineada a la izquierda */
+/* Mobile: una fila compacta, con imágenes reales y alineada a la izquierda */
 @media (max-width: 640px) {
   body .finan .liquidity-operators,
   body .finan .liquidity-operators.reveal {
-    --liq-logo-size: clamp(42px, 12.5vw, 50px);
-    --liq-gap: clamp(4px, 1.35vw, 7px);
+    --liq-logo-size: clamp(50px, 14vw, 58px);
+    --liq-gap: clamp(5px, 1.45vw, 8px);
 
     display: flex !important;
     flex-direction: row !important;
@@ -131,13 +137,13 @@ body .finan .liquidity-operators__logo:focus img {
   }
 
   body .finan .liquidity-operators__label {
-    font-size: clamp(5.8px, 1.65vw, 7px) !important;
+    font-size: clamp(6.2px, 1.7vw, 7.2px) !important;
     letter-spacing: .045em !important;
     opacity: .82 !important;
   }
 
   body .finan .liquidity-operators__more {
-    font-size: clamp(6.4px, 1.85vw, 7.8px) !important;
+    font-size: clamp(6.8px, 1.9vw, 8px) !important;
     opacity: .82 !important;
   }
 
@@ -148,66 +154,28 @@ body .finan .liquidity-operators__logo:focus img {
     border-radius: 8px !important;
   }
 
-  /* En mobile reemplazamos la imagen por un badge CSS para que no se corte ni se superponga. */
-  body .finan .liquidity-operators__logo img {
-    display: none !important;
-  }
-
-  body .finan .liquidity-operators__logo--balanz {
-    background: #252d88 !important;
-  }
-
-  body .finan .liquidity-operators__logo--balanz::before {
-    content: 'BALANZ';
-    color: #fff;
-    font-family: 'Hanken Grotesk', system-ui, sans-serif;
-    font-size: clamp(8px, 2.35vw, 10px);
-    font-weight: 800;
-    letter-spacing: -.04em;
-    line-height: 1;
-  }
-
-  body .finan .liquidity-operators__logo--adcap {
-    flex-direction: column !important;
-    gap: 2px !important;
-    background: #000 !important;
-  }
-
-  body .finan .liquidity-operators__logo--adcap::before {
-    content: 'AdCap';
-    color: #fff;
-    font-family: 'Hanken Grotesk', system-ui, sans-serif;
-    font-size: clamp(8px, 2.35vw, 10px);
-    font-weight: 800;
-    letter-spacing: -.06em;
-    line-height: .9;
-  }
-
-  body .finan .liquidity-operators__logo--adcap::after {
-    content: 'ASSET MANAGEMENT';
-    color: #fff;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(2.6px, .78vw, 3.3px);
-    font-weight: 700;
-    letter-spacing: -.03em;
-    line-height: 1;
-    opacity: .9;
+  body .finan .liquidity-operators__logo img,
+  body .finan .liquidity-operators__logo:hover img,
+  body .finan .liquidity-operators__logo:focus img {
+    display: block !important;
+    border-radius: 8px !important;
   }
 }
 
+/* Celulares muy angostos */
 @media (max-width: 370px) {
   body .finan .liquidity-operators,
   body .finan .liquidity-operators.reveal {
-    --liq-logo-size: 39px;
+    --liq-logo-size: 46px;
     --liq-gap: 4px;
   }
 
   body .finan .liquidity-operators__label {
-    font-size: 5.5px !important;
+    font-size: 5.7px !important;
     letter-spacing: .025em !important;
   }
 
   body .finan .liquidity-operators__more {
-    font-size: 6.2px !important;
+    font-size: 6.3px !important;
   }
 }
