@@ -15,8 +15,8 @@ export default function Solutions() {
               <p>{item.text}</p>
               <div className="sol-ficha" id={'ficha-0' + (index + 1)}>
                 {item.ficha.map(([label, value]) => <div className="frow" key={label}><span>{label}</span><span>{value}</span></div>)}
+                <a className="arrow sol-ficha-link" href={item.href}>Ir a la unidad ↗</a>
               </div>
-              <a className="arrow" href={item.href}>Explorar ↗</a>
             </article>
           ))}
         </div>

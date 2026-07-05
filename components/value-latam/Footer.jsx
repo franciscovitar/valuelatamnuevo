@@ -6,9 +6,9 @@ export default function Footer() {
       <div className="wrap">
         <div className="foot-grid">
           <div>
-            <a className="brand foot-logo" href="#top" style={{ marginBottom: 4 }} aria-label="Value Latam - inicio"><img src="/value-latam-logo.png" alt="Value Latam" /></a>
+            <a className="brand foot-logo" href="#top" style={{ marginBottom: 4 }} aria-label="Value Latam - inicio"><img src="/value-latam-logo.png" alt="Value Latam" width={900} height={327} /></a>
             <p className="blurb">Consultoría financiera integral para empresas. Experiencia senior para ejecutar con claridad en contextos volátiles.</p>
-            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13 }}>{contact.email}<br />WhatsApp {contact.whatsappLabel}<br />{contact.address}</p>
+            <p style={{ fontFamily: "var(--font-mono), monospace", fontSize: 13 }}>{contact.email}<br />WhatsApp {contact.whatsappLabel}<br />{contact.address}</p>
           </div>
           <div><h5>Soluciones</h5><ul><li><a href="#soluciones">Financiamiento</a></li><li><a href="#soluciones">Inversiones & Liquidez</a></li><li><a href="#medios">Medios de Pago</a></li></ul></div>
           <div><h5>Empresa</h5><ul><li><a href="#diferencial">Quiénes somos</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#contacto">Contacto</a></li></ul></div>

@@ -5,7 +5,7 @@ export default function Header() {
     <header className="nav" data-site-header>
       <div className="wrap nav-inner">
         <a className="brand" href="#top" aria-label="Value Latam - inicio">
-          <img src="/value-latam-logo.png" alt="Value Latam" />
+          <img src="/value-latam-logo.png" alt="Value Latam" width={900} height={327} />
         </a>
 
         <nav className="nav-links" id="main-menu" aria-label="Navegación principal">
